@@ -1,34 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
+import NotFoundPage from './pages/NotFoundPage'
+import Header from './components/Header'
+import { Container } from '@mui/material'
+import SideNav from './components/SideNav'
+import styled from 'styled-components';
+import Footer from './components/Footer'
+import LearnKhmer from './pages/LearnKhmerPage'
+import NameConverter from './pages/NameConverter'
+import React from 'react'
+
+type AppLinkType = {
+  displayName: string,
+  location: string,
+  component: React.ReactElement
+}
+
+export const appLinks: AppLinkType[] = [
+  {
+    displayName: "Home",
+    location: "/",
+    component: <Home />
+  },
+  {
+    displayName: "Learn Khmer",
+    location: "/learnKhmer",
+    component: <LearnKhmer />
+  },
+  {
+    displayName: "Name Converter",
+    location: "/nameConverter",
+    component: <NameConverter />
+  },
+]
+
+const NavAndAppContainer = styled.div`
+display: flex;
+justify-content: flex-start;
+`
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='appContainer'>
+      <Header />
+      <NavAndAppContainer>
+        <SideNav />
+        <Container maxWidth='lg'>
+          <BrowserRouter>
+            <Routes>
+              {appLinks.map(link =>
+                <Route path={link.location} element={link.component} />
+              )}
+              <Route path='/*' element={<NotFoundPage />} />
+            </Routes>
+          </BrowserRouter>
+        </Container>
+      </NavAndAppContainer>
+      <Footer />
+    </div>
   )
 }
 
