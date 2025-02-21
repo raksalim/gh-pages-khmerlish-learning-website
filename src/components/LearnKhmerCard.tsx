@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import { Button, Container } from '@mui/material';
 import { CardDataType } from '../pages/LearnKhmerPage';
 
 
@@ -31,12 +31,14 @@ export default function LearnKhmerCard({ cardData }: { cardData: CardDataType })
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
 
-                    <a href="https://drive.google.com/uc?export=download&id=1uTh3DXyFdgvGAs6yIbHo1wMEl_-lnD9P" target="_blank" download>
+                    <a href={cardData.pdfDownloadLink} target="_blank" download>
                         <Button>Download PDF</Button>
                     </a>
                 </Box>
             </Box>
-            <iframe width="560" height="315" src={cardData.youtubeVideoLink} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen={true}></iframe>
+            <Container>
+                <iframe width="560" height="315" src={cardData.youtubeEbeddedLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            </Container>
         </Card>
     );
 }

@@ -1,59 +1,31 @@
 import React from 'react'
 import { useState } from 'react'
 import LearnKhmerCard from '../components/LearnKhmerCard'
+import { tsvToJson } from '../utls/tsvToJson'
+import { khmerVideosTsv } from '../data/data'
 
 
 export type CardDataType = {
     title: string,
     description: string,
     pdfDownloadLink: string,
-    youtubeVideoLink: string,
+    youtubeLink: string,
+    youtubeEbeddedLink: string,
+    datePublished: string,
+    googleDriveLink: string
     // khmerLevel: number,
     // englishLevel: number
 }
 
-const cardsData: CardDataType[] = [
-    {
-        title: "Test Card",
-        description: "test Description",
-        pdfDownloadLink: "www.google.com",
-        youtubeVideoLink: "https://www.youtube.com/embed/YqpvJjADVTw?si=jFkrQQZUc_MdLF82"
-    },
-    {
-        title: "Sample Card 1",
-        description: "Example Description 1",
-        pdfDownloadLink: "www.example.com",
-        youtubeVideoLink: "https://www.youtube.com/embed/YqpvJjADVTw?si=jFkrQQZUc_MdLF82"
-    },
-    {
-        title: "Sample Card 2",
-        description: "Example Description 2",
-        pdfDownloadLink: "www.sample.com",
-        youtubeVideoLink: "https://www.youtube.com/embed/YqpvJjADVTw?si=jFkrQQZUc_MdLF82"
-    },
-    {
-        title: "Sample Card 3",
-        description: "Example Description 3",
-        pdfDownloadLink: "www.placeholder.com",
-        youtubeVideoLink: "https://www.youtube.com/embed/YqpvJjADVTw?si=jFkrQQZUc_MdLF82"
-    },
-]
-
-const cardData: CardDataType = {
-    title: "Test Card",
-    description: "test Description",
-    pdfDownloadLink: "www.google.com",
-    youtubeVideoLink: "https://www.youtube.com/embed/YqpvJjADVTw?si=jFkrQQZUc_MdLF82"
-}
-
 function LearnKhmer() {
+    const cardsData: CardDataType[] = tsvToJson(khmerVideosTsv) as CardDataType[]
 
     return (
         <>
             <h1>LearnKhmer Page</h1>
 
-            {cardsData.map(cardData =>
-                <LearnKhmerCard cardData={cardData}></LearnKhmerCard>
+            {cardsData.map((cardData, idx) =>
+                <LearnKhmerCard key={idx} cardData={cardData}></LearnKhmerCard>
             )
             }
 
