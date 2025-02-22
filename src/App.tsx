@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import NotFoundPage from './pages/NotFoundPage'
 import Header from './components/Header'
@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Footer from './components/Footer'
 import LearnKhmer from './pages/LearnKhmerPage'
 import NameConverter from './pages/NameConverter'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { TabComponent } from './components/VerticalTabWithLink'
 
 type AppLinkType = {
@@ -33,6 +33,11 @@ export const appLinks: AppLinkType[] = [
     location: "/nameConverter",
     component: <NameConverter />
   },
+  {
+    displayName: '',
+    location: "/*",
+    component: <NotFoundPage />
+  }
 ]
 
 const NavAndAppContainer = styled.div`
@@ -54,7 +59,7 @@ function App() {
                 {appLinks.map((link, idx) =>
                   <Route key={idx} path={link.location} element={<TabComponent initialTab={idx} />} />
                 )}
-                <Route path="/*" element={<NotFoundPage />} />
+                {/* <Route path="/*" element={<NotFoundPage />} /> */}
               </Routes>
             </BrowserRouter>
           </Container>

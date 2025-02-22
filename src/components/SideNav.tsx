@@ -1,7 +1,5 @@
 import { Button } from "@mui/material";
-import React from "react";
 import styled from 'styled-components';
-import Home from "../pages/Home";
 import { appLinks } from "../App";
 
 const SideNavContainer = styled.div`

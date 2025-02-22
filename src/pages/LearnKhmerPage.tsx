@@ -21,7 +21,7 @@ export default function LearnKhmer() {
 
     useEffect(() => {
         setVideosToDisplay(khmerVideosJson)
-    }, [khmerVideosJson])
+    }, [])
 
     return (
         <>

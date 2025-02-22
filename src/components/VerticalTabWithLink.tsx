@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link, useLocation } from 'react-router-dom';
-import { Tabs, Tab, Container, Typography, Box } from '@mui/material';
+import { Link, useLocation } from 'react-router-dom';
+import { Tabs, Tab, Container, Box } from '@mui/material';
 import { appLinks } from '../App';
 
 interface TabComponentProps {
@@ -64,7 +64,7 @@ export function TabComponent({ initialTab }: TabComponentProps) {
                 style={{ minWidth: '200px' }}
             >
                 {appLinks.map((link, idx) =>
-                    <Tab key={idx} label={link.displayName} component={Link} to={link.location} sx={{ alignItems: 'flex-start' }} />
+                    link.displayName && <Tab key={idx} label={link.displayName} component={Link} to={link.location} sx={{ alignItems: 'flex-start' }} />
                 )}
             </Tabs>
             {
