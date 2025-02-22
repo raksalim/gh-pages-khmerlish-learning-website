@@ -4,6 +4,8 @@ import { khmerVideosJson } from '../data/data'
 import { FuseResult } from 'fuse.js'
 import SearchBar from '../components/SearchBar/SearchBar'
 import { CardDataType } from '../data/types'
+import { Container, Typography } from '@mui/material'
+import { lightGreen } from '@mui/material/colors'
 
 export default function LearnKhmer() {
 
@@ -11,8 +13,7 @@ export default function LearnKhmer() {
     const [videosToDisplay, setVideosToDisplay] = useState<FuseResult<CardDataType>[]>([])
 
     return (
-        <>
-            <p>LearnKhmer Page</p>
+        <Container maxWidth='lg'>
             <SearchBar
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}
@@ -27,6 +28,6 @@ export default function LearnKhmer() {
                         <LearnKhmerCard key={idx} cardData={cardData}></LearnKhmerCard>
                     )
             }
-        </>
+        </Container >
     )
 }

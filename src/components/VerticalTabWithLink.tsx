@@ -25,7 +25,7 @@ function TabPanel(props: TabPanelProps) {
             {...other}
         >
             {value === index && (
-                <Container maxWidth='lg'>
+                <Container maxWidth='lg' style={{ minWidth: '1000px' }}>
                     {children}
                 </Container>
             )}
@@ -54,7 +54,7 @@ export function TabComponent({ initialTab }: TabComponentProps) {
 
     return (
         <Box
-            sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', justifyContent: 'space-between', minHeight: '80rem' }}
+            sx={{ bgcolor: 'background.paper', display: 'flex', minHeight: '80rem' }}
         >
             <Tabs
                 orientation="vertical"

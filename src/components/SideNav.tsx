@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import styled from 'styled-components';
-import { appLinks } from "../App";
+import { appLinks } from "../data/data";
 
 const SideNavContainer = styled.div`
     height: 80vh;
