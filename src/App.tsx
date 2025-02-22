@@ -1,44 +1,11 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Home from './pages/Home'
-import NotFoundPage from './pages/NotFoundPage'
 import Header from './components/Header'
 import { Container } from '@mui/material'
 import styled from 'styled-components';
 import Footer from './components/Footer'
-import LearnKhmer from './pages/LearnKhmerPage'
-import NameConverter from './pages/NameConverter'
-import React from 'react'
 import { TabComponent } from './components/VerticalTabWithLink'
-
-type AppLinkType = {
-  displayName: string,
-  location: string,
-  component: React.ReactElement
-}
-
-export const appLinks: AppLinkType[] = [
-  {
-    displayName: "Home",
-    location: "/",
-    component: <Home />
-  },
-  {
-    displayName: "Learn Khmer",
-    location: "/learnKhmer",
-    component: <LearnKhmer />
-  },
-  {
-    displayName: "Name Converter",
-    location: "/nameConverter",
-    component: <NameConverter />
-  },
-  {
-    displayName: '',
-    location: "/*",
-    component: <NotFoundPage />
-  }
-]
+import { appLinks } from './data/data'
 
 const NavAndAppContainer = styled.div`
 margin: 0;

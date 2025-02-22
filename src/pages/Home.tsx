@@ -1,5 +1,5 @@
 
-function Home() {
+export default function Home() {
 
   return (
     <>
@@ -7,5 +7,3 @@ function Home() {
     </>
   )
 }
-
-export default Home

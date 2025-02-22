@@ -1,4 +1,32 @@
-import { CardDataType } from "../pages/LearnKhmerPage"
+import Home from "../pages/Home"
+import LearnKhmer from "../pages/LearnKhmerPage"
+import NameConverter from "../pages/NameConverter"
+import NotFoundPage from "../pages/NotFoundPage"
+import { AppLinkType, CardDataType } from "./types"
+
+export const appLinks: AppLinkType[] = [
+    {
+        displayName: "Home",
+        location: "/",
+        component: <Home />
+    },
+    {
+        displayName: "Learn Khmer",
+        location: "/learnKhmer",
+        component: <LearnKhmer />
+    },
+    {
+        displayName: "Name Converter",
+        location: "/nameConverter",
+        component: <NameConverter />
+    },
+    {
+        displayName: '',
+        location: "/*",
+        component: <NotFoundPage />
+    }
+]
+
 
 // export const khmerVideosTsv = `title	description	youtubeLink	youtubeEbeddedLink	datePublished	googleDriveLink	pdfDownloadLink
 // Say hello in Khmer and English	Hello! 🙏 Level 1 #cambodia #khmer #learnenglish #learnkhmer #khmerlish	https://youtube.com/shorts/lcQN9xIo_9o	https://youtube.com/embed/lcQN9xIo_9o	6/22/2024	https://drive.google.com/file/d/1J1yduH7KmjNGQCJyFWHZuEdz2Wzbo6al/view?usp=drive_link	https://drive.google.com/uc?export=download&id=1J1yduH7KmjNGQCJyFWHZuEdz2Wzbo6al

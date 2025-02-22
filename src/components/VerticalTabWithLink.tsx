@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Tabs, Tab, Container, Box } from '@mui/material';
-import { appLinks } from '../App';
+import { appLinks } from '../data/data';
 
 interface TabComponentProps {
     initialTab: number;

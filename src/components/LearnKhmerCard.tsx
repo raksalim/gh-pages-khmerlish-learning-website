@@ -3,12 +3,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
-import { CardDataType } from '../pages/LearnKhmerPage';
-import { FuseResult } from 'fuse.js';
+import { CardDataType } from '../data/types';
 
 
-
-export default function LearnKhmerCard({ cardData }: { cardData: CardDataType | FuseResult<CardDataType> }) {
+export default function LearnKhmerCard({ cardData }: { cardData: CardDataType }) {
 
     return (
         <Card sx={{ display: 'flex', justifyContent: 'space-between', padding: '20px', margin: '15px', borderRadius: '1px', width: '100%' }}>
