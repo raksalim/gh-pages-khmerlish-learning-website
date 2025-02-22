@@ -30,15 +30,14 @@ export default function LearnKhmerCard({ cardData }: { cardData: CardDataType })
                     </Typography>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-
                     <a href={cardData.pdfDownloadLink} target="_blank" download>
                         <Button>Download PDF</Button>
                     </a>
                 </Box>
             </Box>
-            <Container>
-                <iframe width="560" height="315" src={cardData.youtubeEbeddedLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-            </Container>
+            <Box>
+                <iframe width="500" height="315" src={cardData.youtubeEbeddedLink} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            </Box>
         </Card>
     );
 }

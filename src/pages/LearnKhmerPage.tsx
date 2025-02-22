@@ -1,8 +1,6 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LearnKhmerCard from '../components/LearnKhmerCard'
-import { tsvToJson } from '../utls/tsvToJson'
-import { khmerVideosTsv } from '../data/data'
+import { khmerVideosJson } from '../data/data'
 
 
 export type CardDataType = {
@@ -17,20 +15,22 @@ export type CardDataType = {
     // englishLevel: number
 }
 
-function LearnKhmer() {
-    const cardsData: CardDataType[] = tsvToJson(khmerVideosTsv) as CardDataType[]
+export default function LearnKhmer() {
+
+    const [videosToDisplay, setVideosToDisplay] = useState<CardDataType[]>([])
+
+    useEffect(() => {
+        setVideosToDisplay(khmerVideosJson)
+    }, [khmerVideosJson])
 
     return (
         <>
-            <h1>LearnKhmer Page</h1>
-
-            {cardsData.map((cardData, idx) =>
-                <LearnKhmerCard key={idx} cardData={cardData}></LearnKhmerCard>
-            )
+            <p>LearnKhmer Page</p>
+            {
+                videosToDisplay.map((cardData, idx) =>
+                    <LearnKhmerCard key={idx} cardData={cardData}></LearnKhmerCard>
+                )
             }
-
         </>
     )
 }
-
-export default LearnKhmer

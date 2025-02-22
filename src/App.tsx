@@ -1,15 +1,15 @@
 import './App.css'
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Router, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import NotFoundPage from './pages/NotFoundPage'
 import Header from './components/Header'
 import { Container } from '@mui/material'
-import SideNav from './components/SideNav'
 import styled from 'styled-components';
 import Footer from './components/Footer'
 import LearnKhmer from './pages/LearnKhmerPage'
 import NameConverter from './pages/NameConverter'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { TabComponent } from './components/VerticalTabWithLink'
 
 type AppLinkType = {
   displayName: string,
@@ -36,6 +36,7 @@ export const appLinks: AppLinkType[] = [
 ]
 
 const NavAndAppContainer = styled.div`
+margin: 0;
 display: flex;
 justify-content: flex-start;
 `
@@ -43,23 +44,24 @@ justify-content: flex-start;
 function App() {
 
   return (
-    <div className='appContainer'>
-      <Header />
-      <NavAndAppContainer>
-        <SideNav />
-        <Container maxWidth='lg'>
-          <BrowserRouter>
-            <Routes>
-              {appLinks.map(link =>
-                <Route path={link.location} element={link.component} />
-              )}
-              <Route path='/*' element={<NotFoundPage />} />
-            </Routes>
-          </BrowserRouter>
-        </Container>
-      </NavAndAppContainer>
-      <Footer />
-    </div>
+    <>
+      <div className='appContainer'>
+        <Header />
+        <NavAndAppContainer>
+          <Container maxWidth='lg' style={{ margin: 0, padding: 0 }}>
+            <BrowserRouter>
+              <Routes>
+                {appLinks.map((link, idx) =>
+                  <Route key={idx} path={link.location} element={<TabComponent initialTab={idx} />} />
+                )}
+                <Route path="/*" element={<NotFoundPage />} />
+              </Routes>
+            </BrowserRouter>
+          </Container>
+        </NavAndAppContainer>
+        <Footer />
+      </div >
+    </>
   )
 }
 

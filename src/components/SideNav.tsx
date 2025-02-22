@@ -19,8 +19,14 @@ function SideNav() {
 
     return (
         <SideNavContainer>
-            {appLinks.map((link) =>
-                    <Button href={link.location}>{link.displayName}</Button>
+            {appLinks.map((link, idx) =>
+                <Button
+                    key={idx}
+                    href={link.location}
+                    style={{ width: '100%', textAlign: 'start' }}
+                >
+                    {link.displayName}
+                </Button>
             )}
         </SideNavContainer>
     )

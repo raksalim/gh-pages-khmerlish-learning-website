@@ -5,7 +5,7 @@ function NameConverter() {
 
   return (
     <>
-      <h1>NameConverter Page</h1>
+      <p>NameConverter Page</p>
     </>
   )
 }
