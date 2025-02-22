@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Tabs, Tab, Container, Box } from '@mui/material';
 import { appLinks } from '../App';
 
@@ -34,10 +34,10 @@ function TabPanel(props: TabPanelProps) {
 }
 
 export function TabComponent({ initialTab }: TabComponentProps) {
-    const [value, setValue] = React.useState(initialTab);
+    const [value, setValue] = useState(initialTab);
     const location = useLocation();
 
-    React.useEffect(() => {
+    useEffect(() => {
         const path = location.pathname;
         appLinks.map((link, idx) => {
             if (path === link.location) {
@@ -49,6 +49,7 @@ export function TabComponent({ initialTab }: TabComponentProps) {
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         event.preventDefault()
         setValue(newValue);
+        window.history.pushState(null, '', appLinks[newValue].location)
     };
 
     return (

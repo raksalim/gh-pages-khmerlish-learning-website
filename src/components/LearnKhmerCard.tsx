@@ -4,10 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import { CardDataType } from '../pages/LearnKhmerPage';
+import { FuseResult } from 'fuse.js';
 
 
 
-export default function LearnKhmerCard({ cardData }: { cardData: CardDataType }) {
+export default function LearnKhmerCard({ cardData }: { cardData: CardDataType | FuseResult<CardDataType> }) {
 
     return (
         <Card sx={{ display: 'flex', justifyContent: 'space-between', padding: '20px', margin: '15px', borderRadius: '1px', width: '100%' }}>
