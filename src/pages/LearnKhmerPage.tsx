@@ -4,8 +4,7 @@ import { khmerVideosJson } from '../data/data'
 import { FuseResult } from 'fuse.js'
 import SearchBar from '../components/SearchBar/SearchBar'
 import { CardDataType } from '../data/types'
-import { Container, Typography } from '@mui/material'
-import { lightGreen } from '@mui/material/colors'
+import { Container } from '@mui/material'
 
 export default function LearnKhmer() {
 
