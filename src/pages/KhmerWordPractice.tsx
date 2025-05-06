@@ -17,7 +17,7 @@ export const KhmerWordPractice = () => {
             {
                 consonents.map((letter, idx) =>
                     <div>
-                        <button onClick={() => new Audio(`/public/sound/consonants/c-0${idx+1}.wav`).play()}>{letter}</button>
+                        <button onClick={() => new Audio(`/sound/consonants/c-0${idx + 1}.wav`).play()}>{letter}</button>
                         {/* <button onClick={(e) => { setConsonent(letter) }}>{letter}</button>
                         <button onClick={(e) => { setJung("្" + letter) }}>{"្" + letter}</button> */}
                     </div>
