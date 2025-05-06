@@ -11,8 +11,11 @@ export default function LearnKhmer() {
     const [searchTerm, setSearchTerm] = useState<string>('')
     const [videosToDisplay, setVideosToDisplay] = useState<FuseResult<CardDataType>[]>([])
 
+
+
     return (
         <Container maxWidth='lg'>
+
             <SearchBar
                 searchTerm={searchTerm}
                 setSearchTerm={setSearchTerm}

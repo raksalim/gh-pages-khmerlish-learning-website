@@ -1,4 +1,5 @@
 import Home from "../pages/Home"
+import { KhmerWordPractice } from "../pages/KhmerWordPractice"
 import LearnKhmer from "../pages/LearnKhmerPage"
 import NameConverter from "../pages/NameConverter"
 import NotFoundPage from "../pages/NotFoundPage"
@@ -20,6 +21,12 @@ export const appLinks: AppLinkType[] = [
         location: "/nameConverter",
         component: <NameConverter />
     },
+    {
+        displayName: "Khmer Spelling Practice",
+        location: "/spelling",
+        component: <KhmerWordPractice />
+    },
+
     {
         displayName: '',
         location: "/*",
