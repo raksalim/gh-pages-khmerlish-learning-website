@@ -1,4 +1,4 @@
-const khmerConsonantsAll: string[] = [
+export const khmerConsonantsAll: string[] = [
 	'ក',
 	'ខ',
 	'គ',

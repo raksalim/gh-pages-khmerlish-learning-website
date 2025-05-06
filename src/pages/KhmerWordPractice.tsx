@@ -1,11 +1,11 @@
 import { useState } from "react"
+import { khmerConsonantsAll } from "../data/letterConstants"
 
 export const KhmerWordPractice = () => {
     const [consonent, setConsonent] = useState<string>('')
     const [jung, setJung] = useState<string>('')
     const [vowel, setVowel] = useState<string>('')
 
-    const consonents = "កខគឃងចឆឈ".split("")
     const vowels = "ាិីុូ".split("")
 
 
@@ -15,9 +15,9 @@ export const KhmerWordPractice = () => {
             <button onClick={(e) => { setConsonent("") }}>{"-"}</button>
             <button onClick={(e) => { setJung("") }}>{"-"}</button>
             {
-                consonents.map((letter, idx) =>
+                khmerConsonantsAll.map((letter, idx) =>
                     <div>
-                        <button onClick={() => new Audio(`/sound/consonants/c-0${idx + 1}.wav`).play()}>{letter}</button>
+                        <button onClick={() => new Audio(`/sound/consonants/c-${idx + 1}.wav`).play()}>{letter}</button>
                         {/* <button onClick={(e) => { setConsonent(letter) }}>{letter}</button>
                         <button onClick={(e) => { setJung("្" + letter) }}>{"្" + letter}</button> */}
                     </div>
