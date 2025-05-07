@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import khmerlishLogo from '../../public/logo/Khmerlish_Transparent.png';
 import tiktokLogo from '../../public/logo/tiktok-logo.webp';
 import youtubeLogo from '../../public/logo/youtube-logo.svg';
 import khmerlishLogoTransparent from '../../public/logo/Khmerlish logo transparent.png';
