@@ -9,28 +9,32 @@ export const appLinks: AppLinkType[] = [
     {
         displayName: "Home",
         location: "/",
-        component: <Home />
+        component: <Home />,
+        isEnabled: false
     },
     {
         displayName: "Learn Khmer",
         location: "/learnKhmer",
-        component: <LearnKhmer />
+        component: <LearnKhmer />,
+        isEnabled: false
     },
     {
         displayName: "Name Converter",
         location: "/nameConverter",
-        component: <NameConverter />
+        component: <NameConverter />,
+        isEnabled: false
     },
     {
         displayName: "Khmer Spelling Practice",
-        location: "/spelling",
-        component: <KhmerWordPractice />
+        location: "/",
+        component: <KhmerWordPractice />,
+        isEnabled: true
     },
-
     {
         displayName: '',
         location: "/*",
-        component: <NotFoundPage />
+        component: <NotFoundPage />,
+        isEnabled: true
     }
 ]
 

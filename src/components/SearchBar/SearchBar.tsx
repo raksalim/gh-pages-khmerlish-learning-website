@@ -36,7 +36,7 @@ export default function SearchBar({ searchTerm, setSearchTerm, setVideosToDispla
 
     useEffect(() => {
         setVideosToDisplay(fuse.search(searchTerm))
-    }, [searchTerm])
+    }, [searchTerm, setVideosToDisplay, fuse])
 
 
     return (
