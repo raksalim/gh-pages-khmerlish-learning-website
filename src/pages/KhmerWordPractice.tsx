@@ -1,5 +1,8 @@
 // import { useState } from "react"
 import { khmerConsonantsAh, khmerConsonantsAll } from "../data/letterConstants"
+import VolumeMuteRoundedIcon from '@mui/icons-material/VolumeMuteRounded';
+import VolumeDownRoundedIcon from '@mui/icons-material/VolumeDownRounded';
+import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 import { Button } from "@mui/material"
 
 export const KhmerWordPractice = () => {
@@ -40,6 +43,11 @@ export const KhmerWordPractice = () => {
                 }
             </div>
             <div style={{ textAlign: "center", fontSize: "14px", paddingTop: "30px" }}>
+                <div style={{ textAlign: "center", fontSize: "14px", marginBottom: "30px" }}>
+                    <VolumeMuteRoundedIcon style={{ fontSize: "30px" }} />
+                    <VolumeDownRoundedIcon style={{ fontSize: "30px" }} />
+                    <VolumeUpRoundedIcon style={{ fontSize: "30px" }} />
+                </div>
                 <p>Khmer Vowels Keyboard</p>
                 <p>ABC's Keyboard</p>
                 <p>Coming Soon</p>
