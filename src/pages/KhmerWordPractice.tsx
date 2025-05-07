@@ -1,13 +1,13 @@
-import { useState } from "react"
+// import { useState } from "react"
 import { khmerConsonantsAll } from "../data/letterConstants"
 import { Button } from "@mui/material"
 
 export const KhmerWordPractice = () => {
-    const [consonent, setConsonent] = useState<string>('')
-    const [jung, setJung] = useState<string>('')
-    const [vowel, setVowel] = useState<string>('')
+    // const [consonent, setConsonent] = useState<string>('')
+    // const [jung, setJung] = useState<string>('')
+    // const [vowel, setVowel] = useState<string>('')
 
-    const vowels = "ាិីុូ".split("")
+    // const vowels = "ាិីុូ".split("")
 
 
     return (
@@ -22,7 +22,8 @@ export const KhmerWordPractice = () => {
                             <Button variant="outlined"
                                 fullWidth
                                 style={{ fontSize: "20px" }}
-                                onClick={() => { setConsonent(letter); new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
+                                // onClick={() => { setConsonent(letter); new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
+                                onClick={() => { new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                             >
                                 {letter + "្" + letter}
                             </Button>
