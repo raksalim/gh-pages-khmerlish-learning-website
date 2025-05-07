@@ -1,17 +1,9 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Header from './components/Header'
-import { Container } from '@mui/material'
-import styled from 'styled-components';
 import Footer from './components/Footer'
-import { TabComponent } from './components/VerticalTabWithLink'
 import { appLinks } from './data/data'
-
-const NavAndAppContainer = styled.div`
-margin: 0;
-display: flex;
-justify-content: flex-start;
-`
+// import { NavBar } from './components/NavBar';
 
 function App() {
 
@@ -19,18 +11,15 @@ function App() {
     <>
       <div className='appContainer'>
         <Header />
-        <NavAndAppContainer>
-          <Container maxWidth='lg' style={{ margin: 0, padding: 0 }}>
-            <BrowserRouter>
-              <Routes>
-                {appLinks.map((link, idx) =>
-                  <Route key={idx} path={link.location} element={<TabComponent initialTab={idx} />} />
-                )}
-                {/* <Route path="/*" element={<NotFoundPage />} /> */}
-              </Routes>
-            </BrowserRouter>
-          </Container>
-        </NavAndAppContainer>
+        {/* <NavBar /> */}
+        <BrowserRouter>
+          <Routes>
+            {appLinks.filter((link) => link.isEnabled).map((link, idx) =>
+              <Route key={idx} path={link.location} element={link.component} />
+            )}
+          </Routes>
+        </BrowserRouter>
+
         <Footer />
       </div >
     </>

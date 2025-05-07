@@ -1,7 +1,8 @@
 export type AppLinkType = {
     displayName: string,
     location: string,
-    component: React.ReactElement
+    component: React.ReactElement,
+    isEnabled: boolean,
   }
 
 export type CardDataType = {
