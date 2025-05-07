@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import khmerlishLogo from '../../public/logo/Khmerlish_Transparent.png';
+import khmerlishLogo from '/logo/Khmerlish_Transparent.png';
 
 const HeaderContainer = styled.div`
     display: flex;

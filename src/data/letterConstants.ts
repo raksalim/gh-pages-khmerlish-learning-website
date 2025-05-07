@@ -33,3 +33,21 @@ export const khmerConsonantsAll: string[] = [
 	'ឡ',
 	'អ',
 ];
+
+export const khmerConsonantsAh: string[] = [
+	'ក',
+	'ខ',
+	'ច',
+	'ឆ',
+	'ដ',
+	'ឋ',
+	'ណ',
+	'ត',
+	'ថ',
+	'ប',
+	'ផ',
+	'ស',
+	'ហ',
+	'ឡ',
+	'អ',
+]

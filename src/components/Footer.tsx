@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import tiktokLogo from '../../public/logo/tiktok-logo.webp';
-import youtubeLogo from '../../public/logo/youtube-logo.svg';
-import khmerlishLogoTransparent from '../../public/logo/Khmerlish logo transparent.png';
+import tiktokLogo from '/logo/tiktok-logo.webp';
+import youtubeLogo from '/logo/youtube-logo.svg';
+import khmerlishLogoTransparent from '/logo/Khmerlish logo transparent.png';
 
 const FooterContainer = styled.div`
   padding: 40px 20px 40px 20px;
