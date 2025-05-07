@@ -1,4 +1,8 @@
 import styled from 'styled-components';
+import khmerlishLogo from '../../public/logo/Khmerlish_Transparent.png';
+import tiktokLogo from '../../public/logo/tiktok-logo.webp';
+import youtubeLogo from '../../public/logo/youtube-logo.svg';
+import khmerlishLogoTransparent from '../../public/logo/Khmerlish logo transparent.png';
 
 const FooterContainer = styled.div`
   padding: 40px 20px 40px 20px;
@@ -19,23 +23,23 @@ function Footer() {
             <div>
                 <a href="https://www.tiktok.com/@khmerlish" target="_blank" rel="noopener noreferrer">
                     <img
-                        src="/public/logo/tiktok-logo.webp"
+                        src={tiktokLogo}
                         alt="TikTok"
-                        style={{ width: '30px', height: '30px', marginLeft: '10px' }}
+                        style={{ width: '30px' }}
                     />
                 </a>
                 <a href="https://www.youtube.com/@khmerlish_yt" target="_blank" rel="noopener noreferrer">
                     <img
-                        src="/public/logo/youtube-logo.svg"
-                        alt="TikTok"
-                        style={{ width: '30px', height: '30px', marginLeft: '10px' }}
+                        src={youtubeLogo}
+                        alt="YouTube"
+                        style={{ width: '30px', marginLeft: '10px' }}
                     />
                 </a>
                 <a href="https://www.khmerlish.com" target="_blank" rel="noopener noreferrer">
                     <img
-                        src="/public/logo/Khmerlish logo transparent.png"
-                        alt="TikTok"
-                        style={{ width: '30px', height: '30px', marginLeft: '10px' }}
+                        src={khmerlishLogoTransparent}
+                        alt="Khmerlish"
+                        style={{ width: '30px', marginLeft: '10px' }}
                     />
                 </a>
             </div>
