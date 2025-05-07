@@ -1,4 +1,3 @@
-import React from 'react';
 import { appLinks } from '../data/data';
 
 export function NavBar() {
