@@ -11,11 +11,11 @@ export const KhmerWordPractice = () => {
 
 
     return (
-        <>
+        <div style={{ width: 'auto' }}>
             {/* <h1>{consonent + jung + vowel}</h1> */}
             {/* <button onClick={() => { setConsonent("") }}>{"-"}</button>
             <button onClick={() => { setJung("") }}>{"-"}</button> */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "10px" , padding: "5px", margin: "5px"}}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px" }}>
                 {
                     khmerConsonantsAll.map((letter, idx) =>
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }} key={idx}>
@@ -37,6 +37,11 @@ export const KhmerWordPractice = () => {
                     )
                 }
             </div>
+            <div style={{ textAlign: "center", fontSize: "14px", paddingTop: "30px" }}>
+                <p>Khmer Vowels Keyboard</p>
+                <p>ABC's Keyboard</p>
+                <p>Coming Soon</p>
+            </div>
             {/* <button onClick={() => { setVowel("") }}>{"-"}</button> */}
 
             {/* {
@@ -46,6 +51,6 @@ export const KhmerWordPractice = () => {
             }
             <p>{`is "កា" === consonent + vowel៖ ${"កា" === consonent + vowel}`}</p> */}
 
-        </>
+        </div>
     )
 }
