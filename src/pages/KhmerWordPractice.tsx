@@ -30,7 +30,7 @@ export const KhmerWordPractice = () => {
                                 // onClick={() => { setConsonent(letter); new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                                 onClick={() => { new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                             >
-                                {letter + "្" + letter}
+                                { (letter === 'ឡ') ? letter : letter + "្" + letter}
                             </Button>
                             {/* <Button variant="outlined"
                                 style={{ width: "30px" }}
