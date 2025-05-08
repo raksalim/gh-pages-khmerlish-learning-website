@@ -8,13 +8,12 @@ import { useState } from "react";
 import { khmerVowels, khmerVowelsThatDontChange } from "../data/khmer/khmerVowels";
 
 export const KhmerWordPractice = () => {
+    // const [isColorEnabled, setIsColorEnabled] = useState(true);
     const [consonent, setConsonent] = useState<string>('ក')
     const [vowel, setVowel] = useState<string>('ា')
     const [isAh, setIsAh] = useState<boolean>(true)
 
-    const vowels = "ាិីុូ".split("")
-
-    const setVowelColor = (letter: string) =>
+    const setVowelColor = () =>
         isAh ? "primary" : "error"
 
 
@@ -58,7 +57,7 @@ export const KhmerWordPractice = () => {
                             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }} key={idx}>
                                 <Button
                                     variant='outlined'
-                                    color={khmerVowelsThatDontChange.includes(vowel) ? 'success' : setVowelColor(vowel)}
+                                    color={khmerVowelsThatDontChange.includes(vowel) ? 'success' : setVowelColor()}
                                     fullWidth
                                     style={{ fontSize: "20px" }}
                                     onClick={() => { setVowel(vowel); new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
