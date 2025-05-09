@@ -18,7 +18,7 @@ export const KhmerWordPractice = () => {
 
 
     return (
-        <div style={{ maxWidth: '1130px', margin: 'auto', padding: '20px' }}>
+        <div style={{ maxWidth: '1130px', margin: 'auto'}}>
             <style>
                 {`
                     @media (max-width: 1130px) {
