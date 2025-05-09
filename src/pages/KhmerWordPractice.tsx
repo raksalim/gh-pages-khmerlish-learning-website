@@ -18,18 +18,38 @@ export const KhmerWordPractice = () => {
 
 
     return (
-        <div style={{ maxWidth: '1130px', margin: 'auto'}}>
+        <div style={{ maxWidth: '1130px', margin: 'auto' }}>
             <style>
                 {`
                     @media (max-width: 1130px) {
                         .flex-container {
                             flex-direction: column;
-                            }
+                        }
+                        .word-container {
+                            position: sticky;
+                            top: 0;
+                            z-index: 1000;
+                            padding: 10px;
+                            background-color: white;
+                            font-size: 25px;
+                            margin: auto;
+                            width: 100%;
+                            text-align: center;
+                            border-radius: 5px;
+                            transition: all 0.3s ease;
+                        }
                     }
                 `}
             </style>
 
+
+            <div className="word-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', fontSize: '25px', margin: 'auto' }}>
+                {`${consonent}  +  ${vowel} = ${consonent + vowel}`}
+            </div>
+
             <div className="flex-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
+
+
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
                     {
                         khmerConsonantsAll.map((khmerConsonant, idx) =>
@@ -48,9 +68,7 @@ export const KhmerWordPractice = () => {
                         )
                     }
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', maxWidth: "200px", height: '100px', fontSize: '25px', margin: 'auto' }}>
-                    {`${consonent}  +  ${vowel} = ${consonent + vowel}`}
-                </div>
+                <div style={{ width: '100px', height: '50px' }} />
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
                     {
                         khmerVowels.map((vowel, idx) =>
