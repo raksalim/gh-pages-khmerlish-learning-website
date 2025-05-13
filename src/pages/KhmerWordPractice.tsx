@@ -25,6 +25,7 @@ export const KhmerWordPractice = () => {
                     @media (max-width: 1130px) {
                         .flex-container {
                             flex-direction: column;
+                            padding-top: 5px;
                         }
                         .word-container {
                             position: sticky;
@@ -32,7 +33,7 @@ export const KhmerWordPractice = () => {
                             z-index: 1000;
                             padding: 10px;
                             background-color: white;
-                            font-size: 25px;
+                            font-size: 50px;
                             margin: auto;
                             width: 100%;
                             text-align: center;
@@ -48,7 +49,6 @@ export const KhmerWordPractice = () => {
             </div>
 
             <div className="flex-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
-
 
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
                     {
@@ -86,16 +86,9 @@ export const KhmerWordPractice = () => {
                                         setVowel(vowel);
                                         new Audio(`/sound/khmer/vowles-set-${isAh ? '1' : '2'}/v${isAh ? '1' : '2'}-${formatIdx(idx + 1)}.wav`).play()
                                     }}
-                                // onClick={() => { new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                                 >
                                     {vowel}
                                 </Button>
-                                {/* <Button variant="outlined"
-                                style={{ width: "30px" }}
-                                onClick={() => { setJung("្" + letter); new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
-                            >
-                                {"្" + letter}
-                            </Button> */}
                             </div>
                         )
                     }
@@ -109,19 +102,10 @@ export const KhmerWordPractice = () => {
                     <VolumeUpRoundedIcon style={{ fontSize: "30px" }} />
                 </div>
 
-                <p>Khmer Vowels Keyboard</p>
+                <p>Khmer Vowels Set 2</p>
                 <p>ABC's Keyboard</p>
                 <p>Coming Soon</p>
             </div>
-            {/* <button onClick={() => { setVowel("") }}>{"-"}</button> */}
-
-            {/* {
-                vowels.map((letter) =>
-                    <button onClick={() => { setVowel(letter) }}>{letter}</button>
-                )
-            }
-            <p>{`is "កា" === consonent + vowel៖ ${"កា" === consonent + vowel}`}</p> */}
-
         </div >
     )
 }
