@@ -11,10 +11,11 @@ export const KhmerWordPractice = () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
     const [consonent, setConsonent] = useState<string>('ក')
     const [vowel, setVowel] = useState<string>('ា')
-    const [isAh, setIsAh] = useState<boolean>(true)
+    const [isAh] = useState<boolean>(true)
 
     const setVowelColor = () =>
         isAh ? "primary" : "error"
+    const formatIdx = (idx: number) => idx <= 9 ? `0${idx}` : `${idx}`;
 
 
     return (
@@ -41,9 +42,8 @@ export const KhmerWordPractice = () => {
                     }
                 `}
             </style>
-
-
-            <div className="word-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', fontSize: '25px', margin: 'auto' }}>
+            <div className="word-container"
+                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', fontSize: '25px', margin: 'auto' }}>
                 {`${consonent}  +  ${vowel} = ${consonent + vowel}`}
             </div>
 
@@ -59,7 +59,11 @@ export const KhmerWordPractice = () => {
                                     color={khmerConsonantsAh.includes(khmerConsonant) ? "primary" : "error"}
                                     fullWidth
                                     style={{ fontSize: "20px" }}
-                                    onClick={() => { setConsonent(khmerConsonant); setIsAh(khmerConsonantsAh.includes(khmerConsonant)); new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
+                                    onClick={() => {
+                                        setConsonent(khmerConsonant);
+                                        // setIsAh(khmerConsonantsAh.includes(khmerConsonant));
+                                        new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play()
+                                    }}
                                 // onClick={() => { new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                                 >
                                     {(khmerConsonant === 'ឡ') ? khmerConsonant : khmerConsonant + "្" + khmerConsonant}
@@ -78,7 +82,10 @@ export const KhmerWordPractice = () => {
                                     color={khmerVowelsThatDontChange.includes(vowel) ? 'success' : setVowelColor()}
                                     fullWidth
                                     style={{ fontSize: "20px" }}
-                                    onClick={() => { setVowel(vowel); new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
+                                    onClick={() => {
+                                        setVowel(vowel);
+                                        new Audio(`/sound/khmer/vowles-set-${isAh ? '1' : '2'}/v${isAh ? '1' : '2'}-${formatIdx(idx + 1)}.wav`).play()
+                                    }}
                                 // onClick={() => { new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                                 >
                                     {vowel}
