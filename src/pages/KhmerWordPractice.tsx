@@ -54,7 +54,7 @@ export const KhmerWordPractice = () => {
             </style>
             <div className="word-container"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', fontSize: '25px', margin: 'auto' }}>
-                {`${jung === '' ? consonent : consonent + jung}  +  ${vowel} = ${consonent + vowel}`}
+                {`${jung === '' ? consonent : consonent + jung}  +  ${vowel} = ${(jung === '' ? consonent : consonent + jung) + vowel}`}
             </div>
 
             <div className="flex-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
@@ -95,6 +95,8 @@ export const KhmerWordPractice = () => {
                         style={{ fontSize: "10px", marginLeft: "auto", gridColumn: "span 2" }}
                         onClick={() => {
                             setIsConsonent(!isConsonent)
+                            setJung('')
+                            new Audio('/sound/khmer/jung.wav').play()
                         }}
                     >
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -136,7 +138,7 @@ export const KhmerWordPractice = () => {
                             setIsAh(!isAh)
                         }}
                     >
-                        {"<=>"}
+                        {"< - >"}
                     </Button>
                 </div>
 
