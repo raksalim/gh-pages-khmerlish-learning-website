@@ -130,7 +130,7 @@ export const KhmerWordPractice = () => {
                     }
                     <Button
                         variant='outlined'
-                        color='primary'
+                        color={isAh ? "error" : "primary"}
                         fullWidth
                         style={{ fontSize: "15px", marginLeft: "auto", gridColumn: "span 2" }}
                         onClick={() => {
