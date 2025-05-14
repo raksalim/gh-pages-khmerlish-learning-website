@@ -10,11 +10,20 @@ import { khmerVowels, khmerVowelsThatDontChange } from "../data/khmer/khmerVowel
 export const KhmerWordPractice = () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
     const [consonent, setConsonent] = useState<string>('ក')
+    const [jung, setJung] = useState<string>('')
+    const [isConsonent, setIsConsonent] = useState<boolean>(true)
     const [vowel, setVowel] = useState<string>('ា')
-    const [isAh] = useState<boolean>(true)
+    const [isAh, setIsAh] = useState<boolean>(true)
 
     const setVowelColor = () =>
         isAh ? "primary" : "error"
+
+    const setDisplayLetter = (letter: string) => {
+        if (isConsonent) {
+            return (letter === 'ឡ') ? letter : letter + "្" + letter
+        }
+        return "្" + letter
+    }
     const formatIdx = (idx: number) => idx <= 9 ? `0${idx}` : `${idx}`;
 
 
@@ -45,7 +54,7 @@ export const KhmerWordPractice = () => {
             </style>
             <div className="word-container"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', fontSize: '25px', margin: 'auto' }}>
-                {`${consonent}  +  ${vowel} = ${consonent + vowel}`}
+                {`${jung === '' ? consonent : consonent + jung}  +  ${vowel} = ${(jung === '' ? consonent : consonent + jung) + vowel}`}
             </div>
 
             <div className="flex-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
@@ -60,17 +69,38 @@ export const KhmerWordPractice = () => {
                                     fullWidth
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
-                                        setConsonent(khmerConsonant);
-                                        // setIsAh(khmerConsonantsAh.includes(khmerConsonant));
-                                        new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play()
+                                        if (isConsonent) {
+                                            setConsonent(khmerConsonant);
+                                            setJung('')
+                                            setIsAh(khmerConsonantsAh.includes(khmerConsonant));
+                                        } else {
+                                            setJung("្" + khmerConsonant);
+                                            setIsConsonent(true);
+                                        };
+                                        new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play();
                                     }}
-                                // onClick={() => { new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                                 >
-                                    {(khmerConsonant === 'ឡ') ? khmerConsonant : khmerConsonant + "្" + khmerConsonant}
+                                    {setDisplayLetter(khmerConsonant)}
                                 </Button>
                             </div>
                         )
                     }
+                    <Button
+                        variant='outlined'
+                        color='primary'
+                        fullWidth
+                        style={{ fontSize: "10px", marginLeft: "auto", gridColumn: "span 2" }}
+                        onClick={() => {
+                            setIsConsonent(!isConsonent)
+                            setJung('')
+                            isConsonent && new Audio('/sound/khmer/jung.wav').play()
+                        }}
+                    >
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                            <span style={{ border: "2px dotted", borderRadius: "50%", padding: "5px" }}></span>
+                            <span>+</span>
+                        </div>
+                    </Button>
                 </div>
                 <div style={{ width: '100px', height: '50px' }} />
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
@@ -83,8 +113,11 @@ export const KhmerWordPractice = () => {
                                     fullWidth
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
+                                        const soundPath = (isAh || khmerVowelsThatDontChange.includes(vowel))
+                                            ? `/sound/khmer/vowels-set-1/v1-${formatIdx(idx + 1)}.wav`
+                                            : `/sound/khmer/vowels-set-2/v2-${formatIdx(idx + 1)}.wav`
                                         setVowel(vowel);
-                                        new Audio(`/sound/khmer/vowles-set-${isAh ? '1' : '2'}/v${isAh ? '1' : '2'}-${formatIdx(idx + 1)}.wav`).play()
+                                        new Audio(soundPath).play();
                                     }}
                                 >
                                     {vowel}
@@ -92,7 +125,20 @@ export const KhmerWordPractice = () => {
                             </div>
                         )
                     }
+                    <Button
+                        variant='outlined'
+                        color={isAh ? "error" : "primary"}
+                        fullWidth
+                        style={{ fontSize: "15px", marginLeft: "auto", gridColumn: "span 2" }}
+                        onClick={() => {
+                            setConsonent(!isAh ? 'ក' : 'គ')
+                            setIsAh(!isAh)
+                        }}
+                    >
+                        {"< - >"}
+                    </Button>
                 </div>
+
             </div>
 
             <div style={{ textAlign: "center", fontSize: "14px", paddingTop: "30px" }}>
@@ -102,7 +148,7 @@ export const KhmerWordPractice = () => {
                     <VolumeUpRoundedIcon style={{ fontSize: "30px" }} />
                 </div>
 
-                <p>Khmer Vowels Set 2</p>
+                <p>Khmer Independent Vowels</p>
                 <p>ABC's Keyboard</p>
                 <p>Coming Soon</p>
             </div>
