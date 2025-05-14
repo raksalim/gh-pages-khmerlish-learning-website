@@ -71,13 +71,13 @@ export const KhmerWordPractice = () => {
                                     onClick={() => {
                                         if (isConsonent) {
                                             setConsonent(khmerConsonant);
+                                            setJung('')
                                             setIsAh(khmerConsonantsAh.includes(khmerConsonant));
                                         } else {
                                             setJung("្" + khmerConsonant);
                                             setIsConsonent(true);
                                         };
                                         new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play();
-                                        (jung !== '') && setJung('');
                                     }}
                                 >
                                     {setDisplayLetter(khmerConsonant)}
