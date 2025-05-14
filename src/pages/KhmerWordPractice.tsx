@@ -96,7 +96,7 @@ export const KhmerWordPractice = () => {
                         onClick={() => {
                             setIsConsonent(!isConsonent)
                             setJung('')
-                            new Audio('/sound/khmer/jung.wav').play()
+                            isConsonent && new Audio('/sound/khmer/jung.wav').play()
                         }}
                     >
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
