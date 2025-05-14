@@ -69,18 +69,15 @@ export const KhmerWordPractice = () => {
                                     fullWidth
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
-                                        if (!isConsonent) {
-                                            setJung("្" + khmerConsonant);
-                                            setIsConsonent(true);
-                                        }
-                                        if (jung !== '') {
-                                            setJung('');
-                                        }
                                         if (isConsonent) {
                                             setConsonent(khmerConsonant);
                                             setIsAh(khmerConsonantsAh.includes(khmerConsonant));
-                                        }
-                                        new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play()
+                                        } else {
+                                            setJung("្" + khmerConsonant);
+                                            setIsConsonent(true);
+                                        };
+                                        new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play();
+                                        (jung !== '') && setJung('');
                                     }}
                                 >
                                     {setDisplayLetter(khmerConsonant)}
@@ -116,11 +113,11 @@ export const KhmerWordPractice = () => {
                                     fullWidth
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
-                                        setVowel(vowel);
                                         const soundPath = (isAh || khmerVowelsThatDontChange.includes(vowel))
                                             ? `/sound/khmer/vowels-set-1/v1-${formatIdx(idx + 1)}.wav`
                                             : `/sound/khmer/vowels-set-2/v2-${formatIdx(idx + 1)}.wav`
-                                        new Audio(soundPath).play()
+                                        setVowel(vowel);
+                                        new Audio(soundPath).play();
                                     }}
                                 >
                                     {vowel}
