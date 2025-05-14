@@ -11,7 +11,7 @@ export const KhmerWordPractice = () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
     const [consonent, setConsonent] = useState<string>('ក')
     const [vowel, setVowel] = useState<string>('ា')
-    const [isAh] = useState<boolean>(true)
+    const [isAh, setIsAh] = useState<boolean>(true)
 
     const setVowelColor = () =>
         isAh ? "primary" : "error"
@@ -61,10 +61,9 @@ export const KhmerWordPractice = () => {
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
                                         setConsonent(khmerConsonant);
-                                        // setIsAh(khmerConsonantsAh.includes(khmerConsonant));
+                                        setIsAh(khmerConsonantsAh.includes(khmerConsonant));
                                         new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play()
                                     }}
-                                // onClick={() => { new Audio(`/sound/consonants/c-${idx + 1}.wav`).play() }}
                                 >
                                     {(khmerConsonant === 'ឡ') ? khmerConsonant : khmerConsonant + "្" + khmerConsonant}
                                 </Button>
@@ -84,7 +83,10 @@ export const KhmerWordPractice = () => {
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
                                         setVowel(vowel);
-                                        new Audio(`/sound/khmer/vowles-set-${isAh ? '1' : '2'}/v${isAh ? '1' : '2'}-${formatIdx(idx + 1)}.wav`).play()
+                                        const soundPath = (isAh || khmerVowelsThatDontChange.includes(vowel))
+                                            ? `/sound/khmer/vowles-set-1/v1-${formatIdx(idx + 1)}.wav`
+                                            : `/sound/khmer/vowles-set-2/v2-${formatIdx(idx + 1)}.wav`
+                                        new Audio(soundPath).play()
                                     }}
                                 >
                                     {vowel}
