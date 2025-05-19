@@ -1,11 +1,12 @@
 // import { useState } from "react"
-import { khmerConsonantsAh, khmerConsonantsAll } from "../data/khmer/khmerConstants"
+import { khmerConsonantsAh, khmerConsonantsAll } from "../data/khmer/khmerConsonant"
 import VolumeMuteRoundedIcon from '@mui/icons-material/VolumeMuteRounded';
 import VolumeDownRoundedIcon from '@mui/icons-material/VolumeDownRounded';
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 import { Button } from "@mui/material"
 import { useState } from "react";
 import { khmerVowels, khmerVowelsThatDontChange } from "../data/khmer/khmerVowels";
+import { khmerConsonantsForRatTeeth } from "../data/khmer/khmerConsonantForRatTeeth";
 
 export const KhmerWordPractice = () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
@@ -14,6 +15,7 @@ export const KhmerWordPractice = () => {
     const [isConsonent, setIsConsonent] = useState<boolean>(true)
     const [vowel, setVowel] = useState<string>('ា')
     const [isAh, setIsAh] = useState<boolean>(true)
+    const [isRatTeeth, setIsRatTeeth] = useState<boolean>(false)
 
     const setVowelColor = () =>
         isAh ? "primary" : "error"
@@ -72,6 +74,7 @@ export const KhmerWordPractice = () => {
                                         if (isConsonent) {
                                             setConsonent(khmerConsonant);
                                             setJung('')
+                                            setIsRatTeeth(false)
                                             setIsAh(khmerConsonantsAh.includes(khmerConsonant));
                                         } else {
                                             setJung("្" + khmerConsonant);
@@ -85,22 +88,36 @@ export const KhmerWordPractice = () => {
                             </div>
                         )
                     }
+                    {khmerConsonantsForRatTeeth.includes(consonent) && <Button
+                        variant='outlined'
+                        color='primary'
+                        fullWidth
+                        style={{ fontSize: "10px" }}
+                        onClick={() => {
+                            setIsRatTeeth(true)
+                            setConsonent(consonent + '៉')
+                        }}
+                    >
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
+                            <span>៉</span>
+                        </div>
+                    </Button>}
                     <Button
                         variant='outlined'
                         color='primary'
                         fullWidth
-                        style={{ fontSize: "10px", marginLeft: "auto", gridColumn: "span 2" }}
+                        style={{ fontSize: "10px", marginLeft: 'auto', gridColumn: `${!khmerConsonantsForRatTeeth.includes(consonent) ? 'span 2' : ''}` }}
                         onClick={() => {
                             setIsConsonent(!isConsonent)
                             setJung('')
                             isConsonent && new Audio('/sound/khmer/jung.wav').play()
                         }}
                     >
-                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-                            <span style={{ border: "2px dotted", borderRadius: "50%", padding: "5px" }}></span>
-                            <span>+</span>
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
+                            <span>្</span>
                         </div>
                     </Button>
+
                 </div>
                 <div style={{ width: '100px', height: '50px' }} />
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
