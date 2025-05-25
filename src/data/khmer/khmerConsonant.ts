@@ -50,4 +50,16 @@ export const khmerConsonantsAh: string[] = [
 	'ហ',
 	'ឡ',
 	'អ',
-]
+];
+
+export const khmerConsonantsForRatTeeth: string[] = [
+	'ង',
+	'ញ',
+	'ប',
+	'ម',
+	'យ',
+	'រ',
+	'វ',
+];
+
+export const khmerConsonantsForHair: string[] = ['ប', 'ស', 'ហ', 'អ'];
