@@ -1,12 +1,13 @@
 // import { useState } from "react"
-import { khmerConsonantsAh, khmerConsonantsAll } from "../data/khmer/khmerConsonant"
+import { khmerConsonantsAh, khmerConsonantsAll, khmerConsonantsForHair, khmerConsonantsWithHairIndexMapping, khmerConsonantsWithRatTeethIndexMapping } from "../data/khmer/khmerConsonant"
 import VolumeMuteRoundedIcon from '@mui/icons-material/VolumeMuteRounded';
 import VolumeDownRoundedIcon from '@mui/icons-material/VolumeDownRounded';
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 import { Button } from "@mui/material"
 import { useState } from "react";
 import { khmerVowels, khmerVowelsThatDontChange } from "../data/khmer/khmerVowels";
-import { khmerConsonantsForRatTeeth } from "../data/khmer/khmerConsonantForRatTeeth";
+import { khmerConsonantsForRatTeeth } from "../data/khmer/khmerConsonant";
+// import BackspaceIcon from '@mui/icons-material/Backspace';
 
 export const KhmerWordPractice = () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
@@ -15,7 +16,7 @@ export const KhmerWordPractice = () => {
     const [isConsonent, setIsConsonent] = useState<boolean>(true)
     const [vowel, setVowel] = useState<string>('ា')
     const [isAh, setIsAh] = useState<boolean>(true)
-    const [isRatTeeth, setIsRatTeeth] = useState<boolean>(false)
+    const [fullWord, setFullWord] = useState<string>('')
 
     const setVowelColor = () =>
         isAh ? "primary" : "error"
@@ -27,7 +28,6 @@ export const KhmerWordPractice = () => {
         return "្" + letter
     }
     const formatIdx = (idx: number) => idx <= 9 ? `0${idx}` : `${idx}`;
-
 
     return (
         <div style={{ maxWidth: '1130px', margin: 'auto' }}>
@@ -56,9 +56,24 @@ export const KhmerWordPractice = () => {
             </style>
             <div className="word-container"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', fontSize: '25px', margin: 'auto' }}>
-                {`${jung === '' ? consonent : consonent + jung}  +  ${vowel} = ${(jung === '' ? consonent : consonent + jung) + vowel}`}
+                {`${jung === '' ? consonent : consonent + jung}  +  ${vowel ? vowel : "---"} = ${(jung === '' ? consonent : consonent + jung) + vowel}`}
             </div>
+            {/* <div
+                style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+            ><div>
 
+                    {fullWord}
+                </div>
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => {
+                        setFullWord(fullWord.slice(0, -1));
+                    }}
+                >
+                    <BackspaceIcon />
+                </Button>
+            </div> */}
             <div className="flex-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
 
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
@@ -74,10 +89,12 @@ export const KhmerWordPractice = () => {
                                         if (isConsonent) {
                                             setConsonent(khmerConsonant);
                                             setJung('')
-                                            setIsRatTeeth(false)
+                                            setVowel('')
+                                            setFullWord(fullWord + khmerConsonant);
                                             setIsAh(khmerConsonantsAh.includes(khmerConsonant));
                                         } else {
                                             setJung("្" + khmerConsonant);
+                                            setFullWord(fullWord + "្" + khmerConsonant);
                                             setIsConsonent(true);
                                         };
                                         new Audio(`/sound/khmer/consonants/c-${formatIdx(idx + 1)}.wav`).play();
@@ -88,36 +105,58 @@ export const KhmerWordPractice = () => {
                             </div>
                         )
                     }
-                    {khmerConsonantsForRatTeeth.includes(consonent) && <Button
+                    <Button
                         variant='outlined'
                         color='primary'
                         fullWidth
                         style={{ fontSize: "10px" }}
                         onClick={() => {
-                            setIsRatTeeth(true)
                             setConsonent(consonent + '៉')
+                            setFullWord(fullWord + '៉');
+                            const soundPath = `/sound/khmer/consonants/teeth/teeth-${formatIdx(khmerConsonantsWithRatTeethIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
+                            new Audio(soundPath).play();
+                            setIsAh(!isAh)
                         }}
+                        disabled={!khmerConsonantsForRatTeeth.includes(consonent)}
                     >
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
                             <span>៉</span>
                         </div>
-                    </Button>}
+                    </Button>
+                    <Button
+                        variant='outlined'
+                        color='error'
+                        fullWidth
+                        style={{ fontSize: "10px" }}
+                        onClick={() => {
+                            setConsonent(consonent + '៊')
+                            setFullWord(fullWord + '៊');
+                            const soundPath = `/sound/khmer/consonants/hair/hair-${formatIdx(khmerConsonantsWithHairIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
+                            new Audio(soundPath).play();
+                            setIsAh(!isAh)
+                        }}
+                        disabled={!khmerConsonantsForHair.includes(consonent)}
+                    >
+                        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
+                            <span>៊</span>
+                        </div>
+                    </Button>
+
                     <Button
                         variant='outlined'
                         color='primary'
                         fullWidth
-                        style={{ fontSize: "10px", marginLeft: 'auto', gridColumn: `${!khmerConsonantsForRatTeeth.includes(consonent) ? 'span 2' : ''}` }}
+                        style={{ fontSize: "10px", marginLeft: 'auto', gridColumn: 'span 5' }}
                         onClick={() => {
                             setIsConsonent(!isConsonent)
                             setJung('')
-                            isConsonent && new Audio('/sound/khmer/jung.wav').play()
+                            if (isConsonent) { new Audio('/sound/khmer/jung.wav').play() }
                         }}
                     >
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
                             <span>្</span>
                         </div>
                     </Button>
-
                 </div>
                 <div style={{ width: '100px', height: '50px' }} />
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
@@ -135,6 +174,7 @@ export const KhmerWordPractice = () => {
                                             : `/sound/khmer/vowels-set-2/v2-${formatIdx(idx + 1)}.wav`
                                         setVowel(vowel);
                                         new Audio(soundPath).play();
+                                        setFullWord(fullWord + vowel);
                                     }}
                                 >
                                     {vowel}

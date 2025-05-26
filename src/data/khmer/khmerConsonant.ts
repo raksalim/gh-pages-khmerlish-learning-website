@@ -63,3 +63,24 @@ export const khmerConsonantsForRatTeeth: string[] = [
 ];
 
 export const khmerConsonantsForHair: string[] = ['ប', 'ស', 'ហ', 'អ'];
+
+type KhmerConsonantIndexMapping = {
+	[key: number]: number;
+};
+
+export const khmerConsonantsWithRatTeethIndexMapping: KhmerConsonantIndexMapping = {
+	4: 1,
+	9: 2,
+	20: 3,
+	24: 4,
+	25: 5,
+	26: 6,
+	28: 7,
+};
+
+export const khmerConsonantsWithHairIndexMapping: KhmerConsonantIndexMapping = {
+	20: 1,
+	29: 2,
+	30: 3,
+	32: 4,
+};
