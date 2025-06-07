@@ -4,6 +4,7 @@ import {
     type WheelPickerOption,
 } from "@/components/wheel-picker";
 import { englishToKhmerWords } from "@/data/khmerlish/DictOfWords";
+import { infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from "@/data/khmerlish/wordTypes";
 import { arrWordsToLabels } from "@/utils/arrWordsToLabels";
 import { useState } from "react";
 
@@ -19,43 +20,37 @@ const options: WheelPickerOption[] = [
     // ...
 ];
 
-const khmerSubjectWords: string[] = [
-    "i",
-    "you",
-    "her",
-    "him",
-    "they",
-    "them",
-    "us"
-];
 
 export function WordPicker() {
 
-    const subject = arrWordsToLabels(khmerSubjectWords);
+    const subject = arrWordsToLabels(subjectWords);
+    const verb = arrWordsToLabels(verbsWords)
+    const infiniteVerb = arrWordsToLabels(infiniteVerbsWords);
+    const nouns = arrWordsToLabels(nounsWords);
 
-    const [subjectOption, setSubjectOption] = useState("i");
-    const [value2, setValue2] = useState("nextjs");
-    const [value3, setValue3] = useState("nextjs");
-    const [value4, setValue4] = useState("nextjs");
+    const [subjectValue, setSubjectValue] = useState(subject.englishLabels[0].value);
+    const [verbValue, setVerbValue] = useState(verb.englishLabels[0].value);
+    const [infiniteVerbValue, setInfiniteVerbValue] = useState(infiniteVerb.englishLabels[0].value);
+    const [nounsValue, setNounsValue] = useState(nouns.englishLabels[0].value);
 
     return (<>
         <WheelPickerWrapper>
-            <WheelPicker options={subject.englishLabels} value={subjectOption} onValueChange={setSubjectOption} />
-            <WheelPicker options={options} value={value2} onValueChange={setValue2} />
-            <WheelPicker options={options} value={value3} onValueChange={setValue3} />
-            <WheelPicker options={options} value={value4} onValueChange={setValue4} />
+            <WheelPicker options={subject.englishLabels} value={subjectValue} onValueChange={setSubjectValue} />
+            <WheelPicker options={verb.englishLabels} value={verbValue} onValueChange={setVerbValue} />
+            <WheelPicker options={infiniteVerb.englishLabels} value={infiniteVerbValue} onValueChange={setInfiniteVerbValue} />
+            <WheelPicker options={nouns.englishLabels} value={nounsValue} onValueChange={setNounsValue} />
         </WheelPickerWrapper>
         <WheelPickerWrapper>
-            <WheelPicker options={subject.khmerlishLabels} value={subjectOption} onValueChange={setSubjectOption} />
-            <WheelPicker options={options} value={value2} onValueChange={setValue2} />
-            <WheelPicker options={options} value={value3} onValueChange={setValue3} />
-            <WheelPicker options={options} value={value4} onValueChange={setValue4} />
+            <WheelPicker options={subject.khmerlishLabels} value={subjectValue} onValueChange={setSubjectValue} />
+            <WheelPicker options={verb.khmerlishLabels} value={verbValue} onValueChange={setVerbValue} />
+            <WheelPicker options={infiniteVerb.khmerlishLabels} value={infiniteVerbValue} onValueChange={setInfiniteVerbValue} />
+            <WheelPicker options={nouns.khmerlishLabels} value={nounsValue} onValueChange={setNounsValue} />
         </WheelPickerWrapper>
         <WheelPickerWrapper>
-            <WheelPicker options={subject.khmerLabels} value={subjectOption} onValueChange={setSubjectOption} />
-            <WheelPicker options={options} value={value2} onValueChange={setValue2} />
-            <WheelPicker options={options} value={value3} onValueChange={setValue3} />
-            <WheelPicker options={options} value={value4} onValueChange={setValue4} />
+            <WheelPicker options={subject.khmerLabels} value={subjectValue} onValueChange={setSubjectValue} />
+            <WheelPicker options={verb.khmerLabels} value={verbValue} onValueChange={setVerbValue} />
+            <WheelPicker options={infiniteVerb.khmerLabels} value={infiniteVerbValue} onValueChange={setInfiniteVerbValue} />
+            <WheelPicker options={nouns.khmerLabels} value={nounsValue} onValueChange={setNounsValue} />
         </WheelPickerWrapper>
     </>
     );

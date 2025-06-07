@@ -8,15 +8,15 @@ export type LabelsDict = {
 };
 
 export const arrWordsToLabels = (wordsArr: string[]): LabelsDict => {
-	const khmerLabels = wordsArr.map((value) => {
+	const khmerLabels = wordsArr.map((value, idx) => {
 		return {
-			label: englishToKhmerWords[value]?.khmer.text || '',
+			label: englishToKhmerWords[value]?.khmer.text || idx.toString(),
 			value: englishToKhmerWords[value]?.english.text || value,
 		};
 	});
-	const khmerlishLabels = wordsArr.map((value) => {
+	const khmerlishLabels = wordsArr.map((value, idx) => {
 		return {
-			label: englishToKhmerWords[value]?.khmerlish.text || '',
+			label: englishToKhmerWords[value]?.khmerlish.text || idx.toString(),
 			value: englishToKhmerWords[value]?.english.text || value,
 		};
 	});
