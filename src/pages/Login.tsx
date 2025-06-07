@@ -7,7 +7,7 @@ export const Login: React.FC = () => {
 
     const signOutRedirect = () => {
         auth.removeUser()
-        const clientId = process.env.COGNITO_CLIENT_ID || '';
+        const clientId = '47oo9lk1o7c4s1ja49vs1vc6im';
         const logoutUri = window.location.hostname.includes('localhost') ? `http://${window.location.hostname}:5173` : `https://${window.location.hostname}`;
         const cognitoDomain = "https://us-east-2jhdadwal8.auth.us-east-2.amazoncognito.com";
         window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
