@@ -1,25 +1,10 @@
 import {
     WheelPicker,
     WheelPickerWrapper,
-    type WheelPickerOption,
 } from "@/components/wheel-picker";
-import { englishToKhmerWords } from "@/data/khmerlish/DictOfWords";
-import { infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from "@/data/khmerlish/wordTypes";
+import { infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from "@/data/khmerlish/DictOfWords";
 import { arrWordsToLabels } from "@/utils/arrWordsToLabels";
 import { useState } from "react";
-
-const options: WheelPickerOption[] = [
-    {
-        label: "Next.js",
-        value: "nextjs",
-    },
-    {
-        label: "Vite",
-        value: "vite",
-    },
-    // ...
-];
-
 
 export function WordPicker() {
 
