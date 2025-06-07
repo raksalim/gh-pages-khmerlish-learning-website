@@ -26,7 +26,7 @@ export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, isK
 
     return (
         <Button onClick={handlePlay} style={{ width: '100%', padding: 'auto' }}>
-            <MusicNoteIcon onClick={handlePlay} />
+            <MusicNoteIcon />
         </Button>
     );
 };
