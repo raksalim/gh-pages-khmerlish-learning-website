@@ -4,7 +4,6 @@ import {
 } from "@/components/wheel-picker";
 import { infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from "@/data/khmerlish/DictOfWords";
 import { arrWordsToLabels } from "@/utils/arrWordsToLabels";
-import { Button } from "@mui/material";
 import { useState } from "react";
 import { PlayWordButton } from "./PlayWordButton";
 import Switch from "@mui/material/Switch";
@@ -22,9 +21,6 @@ export function WordPicker() {
     const [verbValue, setVerbValue] = useState(verb.englishLabels[0].value);
     const [infiniteVerbValue, setInfiniteVerbValue] = useState(infiniteVerb.englishLabels[0].value);
     const [nounsValue, setNounsValue] = useState(nouns.englishLabels[0].value);
-
-
-    const pickers = [subject, verb, infiniteVerb, nouns];
 
     return (<>
         <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: "16px" }}>
