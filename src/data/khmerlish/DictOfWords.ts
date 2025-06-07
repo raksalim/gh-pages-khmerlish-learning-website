@@ -20,6 +20,7 @@ export const subjectWords: string[] = [
 	'us',
 ];
 export const verbsWords: string[] = [
+    '',
 	'want',
 	'like',
 	'need',
@@ -42,6 +43,7 @@ export const verbsWords: string[] = [
 	// "tend",
 ];
 export const adjectivesWords: string[] = [
+    '',
 	'big',
 	'small',
 	'good',
@@ -52,6 +54,7 @@ export const adjectivesWords: string[] = [
 	'slow',
 ];
 export const infiniteVerbsWords: string[] = [
+    '',
 	'read',
 	'eat',
 	'run',
@@ -67,6 +70,7 @@ export const infiniteVerbsWords: string[] = [
 	'find',
 ];
 export const nounsWords: string[] = [
+    '',
 	'rice',
 	'book',
 	'car',

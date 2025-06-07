@@ -10,13 +10,13 @@ export type LabelsDict = {
 export const arrWordsToLabels = (wordsArr: string[]): LabelsDict => {
 	const khmerLabels = wordsArr.map((value, idx) => {
 		return {
-			label: englishToKhmerWords[value]?.khmer || idx.toString(),
+			label: englishToKhmerWords[value]?.khmer || value,
 			value: englishToKhmerWords[value]?.english || value,
 		};
 	});
 	const khmerlishLabels = wordsArr.map((value, idx) => {
 		return {
-			label: englishToKhmerWords[value]?.khmerlish || idx.toString(),
+			label: englishToKhmerWords[value]?.khmerlish || value,
 			value: englishToKhmerWords[value]?.english || value,
 		};
 	});
