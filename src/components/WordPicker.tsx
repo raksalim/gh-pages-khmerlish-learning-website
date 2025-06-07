@@ -9,9 +9,9 @@ import { useState } from "react";
 export function WordPicker() {
 
     const subject = arrWordsToLabels(subjectWords);
-    const verb = arrWordsToLabels(verbsWords)
-    const infiniteVerb = arrWordsToLabels(infiniteVerbsWords);
-    const nouns = arrWordsToLabels(nounsWords);
+    const verb = arrWordsToLabels(verbsWords, true);
+    const infiniteVerb = arrWordsToLabels(infiniteVerbsWords, true);
+    const nouns = arrWordsToLabels(nounsWords, true);
 
     const [subjectValue, setSubjectValue] = useState(subject.englishLabels[0].value);
     const [verbValue, setVerbValue] = useState(verb.englishLabels[0].value);

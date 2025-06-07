@@ -7,14 +7,17 @@ export type LabelsDict = {
 	englishLabels: WheelPickerOption[];
 };
 
-export const arrWordsToLabels = (wordsArr: string[]): LabelsDict => {
-	const khmerLabels = wordsArr.map((value, idx) => {
+export const arrWordsToLabels = (
+	wordsArr: string[],
+	isSorted?: boolean
+): LabelsDict => {
+	const khmerLabels = wordsArr.map((value) => {
 		return {
 			label: englishToKhmerWords[value]?.khmer || value,
 			value: englishToKhmerWords[value]?.english || value,
 		};
 	});
-	const khmerlishLabels = wordsArr.map((value, idx) => {
+	const khmerlishLabels = wordsArr.map((value) => {
 		return {
 			label: englishToKhmerWords[value]?.khmerlish || value,
 			value: englishToKhmerWords[value]?.english || value,
@@ -26,5 +29,10 @@ export const arrWordsToLabels = (wordsArr: string[]): LabelsDict => {
 			value: englishToKhmerWords[value]?.english || value,
 		};
 	});
+	if (isSorted) {
+		khmerLabels.sort((a, b) => a.value.localeCompare(b.value));
+		khmerlishLabels.sort((a, b) => a.value.localeCompare(b.value));
+		englishLabels.sort((a, b) => a.value.localeCompare(b.value));
+	}
 	return { khmerLabels, khmerlishLabels, englishLabels };
 };
