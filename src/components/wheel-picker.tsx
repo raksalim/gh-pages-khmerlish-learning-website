@@ -37,7 +37,8 @@ function WheelPicker({
         ...classNames,
       }}
       {...props}
-    />
+    >
+    </WheelPickerPrimitive.WheelPicker>
   );
 }
 
