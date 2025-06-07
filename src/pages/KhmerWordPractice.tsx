@@ -7,6 +7,7 @@ import { Button } from "@mui/material"
 import { useState } from "react";
 import { khmerVowels, khmerVowelsThatDontChange } from "../data/khmer/khmerVowels";
 import { khmerConsonantsForRatTeeth } from "../data/khmer/khmerConsonant";
+import { s3BucketBaseUrl } from "@/data/const";
 // import BackspaceIcon from '@mui/icons-material/Backspace';
 
 export const KhmerWordPractice = () => {
@@ -18,7 +19,7 @@ export const KhmerWordPractice = () => {
     const [isAh, setIsAh] = useState<boolean>(true)
     const [fullWord, setFullWord] = useState<string>('')
 
-    const s3Route = 'https://khmerlish-read-aloud-app.s3.us-east-1.amazonaws.com/sound/khmer'
+    const s3LetterSoundBaseUrl = `${s3BucketBaseUrl}/sound/khmer`
 
     const setVowelColor = () =>
         isAh ? "primary" : "error"
@@ -99,7 +100,7 @@ export const KhmerWordPractice = () => {
                                             setFullWord(fullWord + "្" + khmerConsonant);
                                             setIsConsonent(true);
                                         };
-                                        new Audio(`${s3Route}/consonants/c-${formatIdx(idx + 1)}.wav`).play();
+                                        new Audio(`${s3LetterSoundBaseUrl}/consonants/c-${formatIdx(idx + 1)}.wav`).play();
                                     }}
                                 >
                                     {setDisplayLetter(khmerConsonant)}
@@ -115,7 +116,7 @@ export const KhmerWordPractice = () => {
                         onClick={() => {
                             setConsonent(consonent + '៉')
                             setFullWord(fullWord + '៉');
-                            const soundPath = `${s3Route}/consonants/teeth/teeth-${formatIdx(khmerConsonantsWithRatTeethIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
+                            const soundPath = `${s3LetterSoundBaseUrl}/consonants/teeth/teeth-${formatIdx(khmerConsonantsWithRatTeethIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
                             new Audio(soundPath).play();
                             setIsAh(!isAh)
                         }}
@@ -133,7 +134,7 @@ export const KhmerWordPractice = () => {
                         onClick={() => {
                             setConsonent(consonent + '៊')
                             setFullWord(fullWord + '៊');
-                            const soundPath = `${s3Route}/consonants/hair/hair-${formatIdx(khmerConsonantsWithHairIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
+                            const soundPath = `${s3LetterSoundBaseUrl}/consonants/hair/hair-${formatIdx(khmerConsonantsWithHairIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
                             new Audio(soundPath).play();
                             setIsAh(!isAh)
                         }}
@@ -152,7 +153,7 @@ export const KhmerWordPractice = () => {
                         onClick={() => {
                             setIsConsonent(!isConsonent)
                             setJung('')
-                            if (isConsonent) { new Audio(`${s3Route}/jung.wav`).play() }
+                            if (isConsonent) { new Audio(`${s3LetterSoundBaseUrl}/jung.wav`).play() }
                         }}
                     >
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
@@ -172,8 +173,8 @@ export const KhmerWordPractice = () => {
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
                                         const soundPath = (isAh || khmerVowelsThatDontChange.includes(vowel))
-                                            ? `${s3Route}/vowels-set-1/v1-${formatIdx(idx + 1)}.wav`
-                                            : `${s3Route}/vowels-set-2/v2-${formatIdx(idx + 1)}.wav`
+                                            ? `${s3LetterSoundBaseUrl}/vowels-set-1/v1-${formatIdx(idx + 1)}.wav`
+                                            : `${s3LetterSoundBaseUrl}/vowels-set-2/v2-${formatIdx(idx + 1)}.wav`
                                         setVowel(vowel);
                                         new Audio(soundPath).play();
                                         setFullWord(fullWord + vowel);

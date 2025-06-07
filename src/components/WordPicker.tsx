@@ -3,6 +3,8 @@ import {
     WheelPickerWrapper,
     type WheelPickerOption,
 } from "@/components/wheel-picker";
+import { englishToKhmerWords } from "@/data/khmerlish/DictOfWords";
+import { arrWordsToLabels } from "@/utils/arrWordsToLabels";
 import { useState } from "react";
 
 const options: WheelPickerOption[] = [
@@ -17,63 +19,43 @@ const options: WheelPickerOption[] = [
     // ...
 ];
 
-const khmerSubjectOptions: WheelPickerOption[] = [
-    { label: "ខ្ញុំ", value: "I, me" },
-    { label: "អ្នក", value: "you" },
-    { label: "នាង", value: "her" },
-    { label: "គាត់", value: "him" },
-    { label: "ពួកគេ", value: "they" },
-    { label: "ពួកគេ", value: "them" },
-    { label: "ពួកយើង", value: "us" },
-];
-const englishSubjectOptions: WheelPickerOption[] = [
-    { label: "I, me", value: "I, me" },
-    { label: "you", value: "you" },
-    { label: "her", value: "her" },
-    { label: "him", value: "him" },
-    { label: "they", value: "they" },
-    { label: "them", value: "them" },
-    { label: "us", value: "us" },
-];
-const khmerlishSubjectOptions: WheelPickerOption[] = [
-    { label: "khnhom", value: "I, me" },
-    { label: "anak", value: "you" },
-    { label: "neang", value: "her" },
-    { label: "koat", value: "him" },
-    { label: "puok-ke", value: "they" },
-    { label: "puok-ke", value: "them" },
-    { label: "puok-yeung", value: "us" },
+const khmerSubjectWords: string[] = [
+    "i",
+    "you",
+    "her",
+    "him",
+    "they",
+    "them",
+    "us"
 ];
 
+export function WordPicker() {
 
-export function WheelPickerDemo() {
-    const [value1, setValue1] = useState("khnhom");
+    const subject = arrWordsToLabels(khmerSubjectWords);
+
+    const [subjectOption, setSubjectOption] = useState("i");
     const [value2, setValue2] = useState("nextjs");
     const [value3, setValue3] = useState("nextjs");
     const [value4, setValue4] = useState("nextjs");
-    const [value5, setValue5] = useState("nextjs");
 
     return (<>
         <WheelPickerWrapper>
-            <WheelPicker options={englishSubjectOptions} value={value1} onValueChange={setValue1} />
+            <WheelPicker options={subject.englishLabels} value={subjectOption} onValueChange={setSubjectOption} />
             <WheelPicker options={options} value={value2} onValueChange={setValue2} />
             <WheelPicker options={options} value={value3} onValueChange={setValue3} />
             <WheelPicker options={options} value={value4} onValueChange={setValue4} />
-            <WheelPicker options={options} value={value5} onValueChange={setValue5} />
         </WheelPickerWrapper>
         <WheelPickerWrapper>
-            <WheelPicker options={khmerlishSubjectOptions} value={value1} onValueChange={setValue1} />
+            <WheelPicker options={subject.khmerlishLabels} value={subjectOption} onValueChange={setSubjectOption} />
             <WheelPicker options={options} value={value2} onValueChange={setValue2} />
             <WheelPicker options={options} value={value3} onValueChange={setValue3} />
             <WheelPicker options={options} value={value4} onValueChange={setValue4} />
-            <WheelPicker options={options} value={value5} onValueChange={setValue5} />
         </WheelPickerWrapper>
         <WheelPickerWrapper>
-            <WheelPicker options={khmerSubjectOptions} value={value1} onValueChange={setValue1} />
+            <WheelPicker options={subject.khmerLabels} value={subjectOption} onValueChange={setSubjectOption} />
             <WheelPicker options={options} value={value2} onValueChange={setValue2} />
             <WheelPicker options={options} value={value3} onValueChange={setValue3} />
             <WheelPicker options={options} value={value4} onValueChange={setValue4} />
-            <WheelPicker options={options} value={value5} onValueChange={setValue5} />
         </WheelPickerWrapper>
     </>
     );

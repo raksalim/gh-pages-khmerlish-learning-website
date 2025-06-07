@@ -1,4 +1,3 @@
-import { WheelPickerDemo } from "@/components/WordPicker"
 import Home from "../pages/Home"
 import { KhmerWordPractice } from "../pages/KhmerWordPractice"
 import LearnKhmer from "../pages/LearnKhmerPage"
@@ -6,6 +5,7 @@ import { Login } from "../pages/Login"
 import NameConverter from "../pages/NameConverter"
 import NotFoundPage from "../pages/NotFoundPage"
 import { AppLinkType, CardDataType } from "./types"
+import SpeakingPracticePage from "@/pages/SpeakingPracticePage"
 
 export const appLinks: AppLinkType[] = [
     {
@@ -35,7 +35,7 @@ export const appLinks: AppLinkType[] = [
     {
         displayName: "Khmer Spelling Practice",
         location: "/speakingPractice",
-        component: <WheelPickerDemo />,
+        component: <SpeakingPracticePage />,
         isEnabled: true
     },
     {
