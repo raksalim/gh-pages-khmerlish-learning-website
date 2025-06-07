@@ -76,10 +76,10 @@ export function WordPicker() {
                 <WheelPicker options={infiniteVerb.khmerlishLabels} value={infiniteVerbValue} onValueChange={setInfiniteVerbValue} />
                 <WheelPicker options={nouns.khmerlishLabels} value={nounsValue} onValueChange={setNounsValue} />
 
-                <PlayWordButton englishWord={subjectValue} />
-                <PlayWordButton englishWord={verbValue} />
-                <PlayWordButton englishWord={infiniteVerbValue} />
-                <PlayWordButton englishWord={nounsValue} />
+                <PlayWordButton englishWord={subjectValue} isKhmer />
+                <PlayWordButton englishWord={verbValue} isKhmer />
+                <PlayWordButton englishWord={infiniteVerbValue} isKhmer />
+                <PlayWordButton englishWord={nounsValue} isKhmer />
             </div>
         </WheelPickerWrapper>}
 
