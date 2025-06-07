@@ -1,3 +1,4 @@
+import { WheelPickerDemo } from "@/components/WordPicker"
 import Home from "../pages/Home"
 import { KhmerWordPractice } from "../pages/KhmerWordPractice"
 import LearnKhmer from "../pages/LearnKhmerPage"
@@ -29,6 +30,12 @@ export const appLinks: AppLinkType[] = [
         displayName: "Khmer Spelling Practice",
         location: "/",
         component: <KhmerWordPractice />,
+        isEnabled: true
+    },
+    {
+        displayName: "Khmer Spelling Practice",
+        location: "/speakingPractice",
+        component: <WheelPickerDemo />,
         isEnabled: true
     },
     {
