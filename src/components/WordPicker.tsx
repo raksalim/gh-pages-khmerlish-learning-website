@@ -8,6 +8,7 @@ import { useState } from "react";
 import { PlayWordButton } from "./PlayWordButton";
 import Switch from "@mui/material/Switch";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import './WheelPicker.css'
 
 export function WordPicker() {
     const [isShowKhmerlish, setIsShowKhmerlish] = useState(false);
@@ -35,27 +36,37 @@ export function WordPicker() {
                 label="Khmerlish"
             />
         </div>
-        <WheelPickerWrapper>
+        <WheelPickerWrapper className="wheel-picker-wrapper-custom">
             <div
                 style={{
-                    display: "grid",
-                    gridTemplateColumns: "repeat(4, 1fr)",
-                    gridTemplateRows: "repeat(2, auto)",
-                    gap: "16px",
-                    width: "100%",
+                    display: 'flex',
+                    width: '100%',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: "40px"
                 }}
             >
                 <WheelPicker options={subject.englishLabels} value={subjectValue} onValueChange={setSubjectValue} />
                 <WheelPicker options={verb.englishLabels} value={verbValue} onValueChange={setVerbValue} />
                 <WheelPicker options={infiniteVerb.englishLabels} value={infiniteVerbValue} onValueChange={setInfiniteVerbValue} />
                 <WheelPicker options={nouns.englishLabels} value={nounsValue} onValueChange={setNounsValue} />
-
-                <PlayWordButton englishWord={subjectValue} />
-                <PlayWordButton englishWord={verbValue} />
-                <PlayWordButton englishWord={infiniteVerbValue} />
-                <PlayWordButton englishWord={nounsValue} />
             </div>
+
         </WheelPickerWrapper>
+        <div
+            style={{
+                display: 'flex',
+                width: '100%',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: "50px"
+            }}
+        >
+            <PlayWordButton englishWord={subjectValue} />
+            <PlayWordButton englishWord={verbValue} />
+            <PlayWordButton englishWord={infiniteVerbValue} />
+            <PlayWordButton englishWord={nounsValue} />
+        </div>
 
         {isShowKhmerlish && <WheelPickerWrapper>
             <div
