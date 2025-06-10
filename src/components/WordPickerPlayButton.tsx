@@ -4,7 +4,6 @@ import {
 } from "@/components/wheel-picker";
 import { englishToKhmerWords } from "@/data/khmerlish/DictOfWords";
 import { LabelsDict } from "@/utils/arrWordsToLabels";
-import { useState } from "react";
 import { PlayWordButton } from "./PlayWordButton";
 import './WheelPickerPlayButton.css'
 
