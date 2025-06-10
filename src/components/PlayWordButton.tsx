@@ -1,4 +1,5 @@
 import { s3BucketBaseUrl } from '@/data/const';
+import { englishToKhmerWords } from '@/data/khmerlish/DictOfWords';
 import { Button } from '@mui/material';
 import React from 'react';
 

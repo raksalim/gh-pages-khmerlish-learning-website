@@ -82,9 +82,20 @@ const SpeakingPracticePage: React.FC = () => {
 
             <Button variant="outlined" color="primary" style={{ width: '100%' }} className='clamp-size'>
                 <PlayArrowIcon />
-                {pickerValues.map((value) => (
-                    <span key={value}>{englishToKhmerWords[value]?.khmer}</span>
-                ))}
+                <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+                    <div>
+                        {pickerValues.map((value) => (
+                            <span key={value}>{englishToKhmerWords[value]?.khmer}</span>
+                        ))}
+                    </div>
+                    <div>
+                        {pickerValues.map((value) => (
+                            <span key={value} style={{ fontSize: '10px', color: 'gray' }} >
+                                {`${englishToKhmerWords[value]?.khmerlish ? englishToKhmerWords[value]?.khmerlish : ''} `}
+                            </span>
+                        ))}
+                    </div>
+                </div>
             </Button>
         </div>)
         }
