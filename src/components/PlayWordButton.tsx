@@ -25,8 +25,10 @@ export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, dis
     };
 
     return (
-        <Button onClick={handlePlay} variant="outlined" color="primary" style={{ width: '100%' }}>
-            {displayWord}
+        <Button onClick={handlePlay} variant="outlined" color="primary" style={{ width: '100%' }} disabled={!englishWord}>
+            <span className="clamp-size">
+                {displayWord || ' - '}
+            </span>
         </Button>
     );
 };

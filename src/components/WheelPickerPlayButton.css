@@ -10,12 +10,17 @@
 		opacity: 1;
 	}
 }
+@media (max-width: 600px) {
+	.wheel-picker-wrapper-custom {
+		font-size: 10px;
+	}
+}
 
 .wheel-picker-wrapper-custom {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: .5 rem;
-	animation: fadeIn 1.2s ease-in-out 0s 1 normal forwards;
+	gap: 0.5rem;
+	animation: fadeIn 1s ease-in-out 0s 1 normal forwards;
 }
