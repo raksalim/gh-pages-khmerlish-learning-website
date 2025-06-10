@@ -11,7 +11,7 @@ const s3WordSoundBaseUrl = `${s3BucketBaseUrl}/sounds/words`;
 // const englishS3WordSoundBaseUrl = `${s3WordSoundBaseUrl}/english`;
 
 export const subjectWords: string[] = [
-	'i',
+	'I',
 	'you',
 	'her',
 	'him',
@@ -20,7 +20,7 @@ export const subjectWords: string[] = [
 	'us',
 ];
 export const verbsWords: string[] = [
-    '',
+	'',
 	'want',
 	'like',
 	'need',
@@ -43,7 +43,7 @@ export const verbsWords: string[] = [
 	// "tend",
 ];
 export const adjectivesWords: string[] = [
-    '',
+	'',
 	'big',
 	'small',
 	'good',
@@ -54,7 +54,7 @@ export const adjectivesWords: string[] = [
 	'slow',
 ];
 export const infiniteVerbsWords: string[] = [
-    '',
+	'',
 	'read',
 	'eat',
 	'run',
@@ -70,7 +70,7 @@ export const infiniteVerbsWords: string[] = [
 	'find',
 ];
 export const nounsWords: string[] = [
-    '',
+	'',
 	'rice',
 	'book',
 	'car',
@@ -80,6 +80,11 @@ export const nounsWords: string[] = [
 	'computer',
 	'school',
 	'city',
+	'drink',
+	'food',
+	'water',
+	'people',
+	'thing',
 ];
 
 export const englishToKhmerWords: Record<string, Word> = {
@@ -178,7 +183,7 @@ export const englishToKhmerWords: Record<string, Word> = {
 		khmerlish: 'phteah',
 		english: 'house',
 	},
-	i: {
+	I: {
 		khmer: 'ខ្ញុំ',
 		khmerlish: 'khnhom',
 		english: 'I',

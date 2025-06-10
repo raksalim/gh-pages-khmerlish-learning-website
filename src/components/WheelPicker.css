@@ -1,5 +1,14 @@
 .wheel-picker-wrapper-custom {
-    display: grid;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns: 1fr;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@keyframes fadeIn {
+	from {
+		flex: 0;
+	}
+	to {
+		flex: 1;
+	}
 }

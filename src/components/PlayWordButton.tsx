@@ -1,16 +1,16 @@
 import { s3BucketBaseUrl } from '@/data/const';
 import { Button } from '@mui/material';
 import React from 'react';
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
 
 type PlayWordButtonProps = {
     englishWord: string; // S3 URL to the audio file
+    displayWord?: string; // Optional display word, if different from englishWord
     isKhmer?: boolean;
     playbackSpeed?: number; // Optional playback speed, default is 1
 }
 
-export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, isKhmer = false, playbackSpeed = 1 }) => {
+export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, displayWord, isKhmer = true, playbackSpeed = 1 }) => {
     const s3WordBaseUrl = `${s3BucketBaseUrl}/sound/words`;
 
     const audioUrl = `${s3WordBaseUrl}/${isKhmer ? 'khmer' : 'english'}/${englishWord}.wav`; // Replace with your actual audio URL logic
@@ -25,8 +25,8 @@ export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, isK
     };
 
     return (
-        <Button onClick={handlePlay} style={{ width: '100%', padding: 'auto' }}>
-            <MusicNoteIcon />
+        <Button onClick={handlePlay} variant="outlined" color="primary" style={{ width: '100%' }}>
+            {displayWord}
         </Button>
     );
 };
