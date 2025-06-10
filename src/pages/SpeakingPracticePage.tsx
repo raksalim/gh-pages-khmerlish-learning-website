@@ -1,5 +1,4 @@
 import DifficultyLevel, { DifficultySliderOption } from '@/components/DifficultyLevel';
-import { WordPicker } from '@/components/WordPicker';
 import { WordPickerPlayButton } from '@/components/WordPickerPlayButton';
 import { infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from '@/data/khmerlish/DictOfWords';
 import { arrWordsToLabels } from '@/utils/arrWordsToLabels';
@@ -30,26 +29,27 @@ const SpeakingPracticePage: React.FC = () => {
 
         <DifficultyLevel difficultyScale={speakingPracticeDifficultyScale} setDifficultyLevel={setDifficultyLevel} />
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '16px' }}>
-            <WordPickerPlayButton
+            {difficultyLevel > 1 && <WordPickerPlayButton
                 difficultyLevel={difficultyLevel}
                 pickerLabelsDict={subject}
                 buttonLanguage="khmer"
                 pickerLanguage="english"
-            />
-            {difficultyLevel > 2 && <WordPickerPlayButton
+            />}
+            {difficultyLevel > 4 && <WordPickerPlayButton
                 difficultyLevel={difficultyLevel}
                 pickerLabelsDict={verb}
                 buttonLanguage="khmer"
                 pickerLanguage="english"
             />
             }
-            {difficultyLevel > 3 && <WordPickerPlayButton
+            {difficultyLevel > 2 && <WordPickerPlayButton
                 difficultyLevel={difficultyLevel}
                 pickerLabelsDict={infiniteVerb}
                 buttonLanguage="khmer"
                 pickerLanguage="english"
+
             />}
-            {difficultyLevel > 4 && <WordPickerPlayButton
+            {difficultyLevel > 3 && <WordPickerPlayButton
                 difficultyLevel={difficultyLevel}
                 pickerLabelsDict={nouns}
                 buttonLanguage="khmer"
