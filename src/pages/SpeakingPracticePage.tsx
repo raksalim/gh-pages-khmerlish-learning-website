@@ -80,7 +80,7 @@ const SpeakingPracticePage: React.FC = () => {
 
         {difficultyLevel > 2 && (<div style={{ width: '100%', marginTop: '5px' }}>
 
-            <Button variant="outlined" color="primary" style={{ width: '100%' }} className='clamp-size'>
+            <Button variant="outlined" color="primary" style={{ width: '100%', textTransform: 'none' }} className='clamp-size' >
                 <PlayArrowIcon />
                 <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <div>
@@ -90,7 +90,7 @@ const SpeakingPracticePage: React.FC = () => {
                     </div>
                     <div>
                         {pickerValues.map((value) => (
-                            <span key={value} style={{ fontSize: '10px', color: 'gray' }} >
+                            <span key={value} style={{ fontSize: '11px', color: 'gray' }} >
                                 {`${englishToKhmerWords[value]?.khmerlish ? englishToKhmerWords[value]?.khmerlish : ''} `}
                             </span>
                         ))}

@@ -1,5 +1,4 @@
 import { s3BucketBaseUrl } from '@/data/const';
-import { englishToKhmerWords } from '@/data/khmerlish/DictOfWords';
 import { Button } from '@mui/material';
 import React from 'react';
 
@@ -27,9 +26,7 @@ export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, dis
 
     return (
         <Button onClick={handlePlay} variant="outlined" color="primary" style={{ width: '100%' }} disabled={!englishWord}>
-            <span className="clamp-size">
-                {displayWord || ' - '}
-            </span>
+            {displayWord || ' - '}
         </Button>
     );
 };
