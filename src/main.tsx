@@ -5,8 +5,8 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 
 const cognitoAuthConfig = {
-  authority: "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_JhDadWAl8",
-  client_id: "47oo9lk1o7c4s1ja49vs1vc6im",
+  authority: "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_w8zbAeSTu",
+  client_id: "5vb2i2a2tbdaat794gjq8tups",
   redirect_uri: window.location.hostname.includes('localhost') ? `http://${window.location.hostname}:5173` : `https://${window.location.hostname}`,
   response_type: "code",
   scope: "phone openid email",
