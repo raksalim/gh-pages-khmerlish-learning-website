@@ -4,9 +4,15 @@ import youtubeLogo from '/logo/youtube-logo.svg';
 import khmerlishLogoTransparent from '/logo/Khmerlish logo transparent.png';
 
 const FooterContainer = styled.div`
-  padding: 40px 20px 40px 20px;
   font-size: 12px;
   text-align: center;
+  margin-top: auto;
+`;
+
+const Flex = styled.div`
+  padding: 10px 20px 10px 20px;
+  display: flex;
+  justify-content: center;
 `;
 
 function Footer() {
@@ -16,10 +22,10 @@ function Footer() {
 
     return (
         <FooterContainer>
-            <div>
+            <p style={{ fontSize: '14px', marginBottom: '10px' }}>
                 {year} © Copyright {companyName}
-            </div>
-            <div>
+            </p>
+            <Flex>
                 <a href="https://www.tiktok.com/@khmerlish" target="_blank" rel="noopener noreferrer">
                     <img
                         src={tiktokLogo}
@@ -41,7 +47,7 @@ function Footer() {
                         style={{ width: '30px', marginLeft: '10px' }}
                     />
                 </a>
-            </div>
+            </Flex>
         </FooterContainer>
     )
 }

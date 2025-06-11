@@ -5,6 +5,7 @@ import { Login } from "../pages/Login"
 import NameConverter from "../pages/NameConverter"
 import NotFoundPage from "../pages/NotFoundPage"
 import { AppLinkType, CardDataType } from "./types"
+import SpeakingPracticePage from "@/pages/SpeakingPracticePage"
 
 export const appLinks: AppLinkType[] = [
     {
@@ -29,6 +30,12 @@ export const appLinks: AppLinkType[] = [
         displayName: "Khmer Spelling Practice",
         location: "/",
         component: <KhmerWordPractice />,
+        isEnabled: true
+    },
+    {
+        displayName: "Khmer Spelling Practice",
+        location: "/speakingPractice",
+        component: <SpeakingPracticePage />,
         isEnabled: true
     },
     {
