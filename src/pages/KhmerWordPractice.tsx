@@ -10,7 +10,7 @@ import { khmerConsonantsForRatTeeth } from "../data/khmer/khmerConsonant";
 import { s3BucketBaseUrl } from "@/data/const";
 // import BackspaceIcon from '@mui/icons-material/Backspace';
 
-export const KhmerWordPractice = () => {
+export const KhmerWordPractice =  () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
     const [consonent, setConsonent] = useState<string>('ក')
     const [jung, setJung] = useState<string>('')
