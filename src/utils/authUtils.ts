@@ -1,12 +1,16 @@
-import { fetchAuthSession, getCurrentUser } from 'aws-amplify/auth';
+import {
+	fetchAuthSession,
+	getCurrentUser,
+	fetchUserAttributes,
+} from 'aws-amplify/auth';
 
 export async function getUserEmail(): Promise<boolean | string> {
 	try {
-		const currentSession = await fetchAuthSession(); // try to refresh the session first
-		const email = currentSession.tokens?.idToken?.payload.email as string;
-		return email;
+		const userAttributes = await fetchUserAttributes();
+		console.log('User email:', userAttributes.email);
+		return userAttributes.email as string;
 	} catch (err) {
-		console.warn("fetchAuthSession error", err);
+		console.warn('fetchAuthSession error', err);
 		return false;
 	}
 }
@@ -15,7 +19,7 @@ export async function isSignedIn(): Promise<boolean | string> {
 		await fetchAuthSession(); // try to refresh the session first
 		await getCurrentUser(); // Wait for getCurrentUser, if not logged in an exception will be thrown
 	} catch (err) {
-		console.warn("fetchAuthSession error", err);
+		console.warn('fetchAuthSession error', err);
 		return false;
 	}
 	return true;
