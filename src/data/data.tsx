@@ -1,13 +1,19 @@
+import LoginAmplifyAuth from "@/pages/LoginAmplifyAuth"
 import Home from "../pages/Home"
 import { KhmerWordPractice } from "../pages/KhmerWordPractice"
 import LearnKhmer from "../pages/LearnKhmerPage"
-import { Login } from "../pages/Login"
 import NameConverter from "../pages/NameConverter"
 import NotFoundPage from "../pages/NotFoundPage"
 import { AppLinkType, CardDataType } from "./types"
 import SpeakingPracticePage from "@/pages/SpeakingPracticePage"
 
 export const appLinks: AppLinkType[] = [
+    {
+        displayName: "Login",
+        location: "/login",
+        component: <LoginAmplifyAuth />,
+        isEnabled: true
+    },
     {
         displayName: "Home",
         location: "/",
@@ -38,12 +44,7 @@ export const appLinks: AppLinkType[] = [
         component: <SpeakingPracticePage />,
         isEnabled: true
     },
-    {
-        displayName: "Login",
-        location: "/login",
-        component: <Login />,
-        isEnabled: true
-    },
+
     {
         displayName: '',
         location: "/*",
