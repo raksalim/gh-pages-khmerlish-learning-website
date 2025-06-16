@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuth } from "react-oidc-context";
+import { defineAuth, secret } from '@aws-amplify/backend';
 
 export const Login: React.FC = () => {
     console.log(window.location.hostname)
@@ -7,12 +8,12 @@ export const Login: React.FC = () => {
     console.log(auth)
 
     const signOutRedirect = () => {
-        auth.removeUser()
-        const clientId = '5vb2i2a2tbdaat794gjq8tups';
+        const clientId = "1dbkk59stlbcn9a1mvdmggkjok";
         const logoutUri = window.location.hostname.includes('localhost') ? `http://${window.location.hostname}:5173` : `https://${window.location.hostname}`;
-        const cognitoDomain = "https://us-east-2w8zbAeSTu.auth.us-east-2.amazoncognito.com";
+        const cognitoDomain = "https://khmerlish.auth.us-east-1.amazoncognito.com";
         window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
     };
+
     if (auth.isLoading) {
         return <div>Loading...</div>;
     }

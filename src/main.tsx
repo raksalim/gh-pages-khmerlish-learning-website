@@ -1,22 +1,21 @@
-import { AuthProvider } from "react-oidc-context";
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-// import './index.css'
-import App from './App.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App";
+import { AuthProvider } from "react-oidc-context";
 
 const cognitoAuthConfig = {
-  authority: "https://cognito-idp.us-east-2.amazonaws.com/us-east-2_w8zbAeSTu",
-  client_id: "5vb2i2a2tbdaat794gjq8tups",
+  authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_BPuTDDHd3",
+  client_id: "1dbkk59stlbcn9a1mvdmggkjok",
   redirect_uri: window.location.hostname.includes('localhost') ? `http://${window.location.hostname}:5173` : `https://${window.location.hostname}`,
   response_type: "code",
-  scope: "phone openid email",
+  scope: "aws.cognito.signin.user.admin email openid phone profile",
 };
 
-
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <React.StrictMode>
     <AuthProvider {...cognitoAuthConfig}>
       <App />
     </AuthProvider>
-  </StrictMode>,
+  </React.StrictMode>
 )
