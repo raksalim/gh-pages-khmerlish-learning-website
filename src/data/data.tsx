@@ -9,6 +9,12 @@ import SpeakingPracticePage from "@/pages/SpeakingPracticePage"
 
 export const appLinks: AppLinkType[] = [
     {
+        displayName: "Login",
+        location: "/login",
+        component: <LoginAmplifyAuth />,
+        isEnabled: true
+    },
+    {
         displayName: "Home",
         location: "/",
         component: <Home />,
@@ -38,12 +44,7 @@ export const appLinks: AppLinkType[] = [
         component: <SpeakingPracticePage />,
         isEnabled: true
     },
-    {
-        displayName: "Login",
-        location: "/login",
-        component: <LoginAmplifyAuth />,
-        isEnabled: true
-    },
+
     {
         displayName: '',
         location: "/*",
