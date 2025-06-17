@@ -9,6 +9,7 @@ import { useState } from 'react'
 function App() {
   const [userEmail, setUserEmail] = useState<string | boolean>('')
 
+  
   getUserEmail().then((email) => {
     console.log("email", email)
     setUserEmail(email)

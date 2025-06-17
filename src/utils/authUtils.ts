@@ -1,14 +1,10 @@
-import {
-	fetchAuthSession,
-	getCurrentUser,
-	fetchUserAttributes,
-} from 'aws-amplify/auth';
+import { fetchAuthSession, getCurrentUser } from 'aws-amplify/auth';
 
 export async function getUserEmail(): Promise<boolean | string> {
 	try {
-		const userAttributes = await fetchUserAttributes();
-		console.log('User email:', userAttributes.email);
-		return userAttributes.email as string;
+		const currentSession = await fetchAuthSession(); // try to refresh the session first
+		const email = currentSession.tokens?.idToken?.payload.email as string;
+		return email;
 	} catch (err) {
 		console.warn('fetchAuthSession error', err);
 		return false;
