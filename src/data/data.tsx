@@ -3,22 +3,28 @@ import Home from "../pages/Home"
 import { KhmerWordPractice } from "../pages/KhmerWordPractice"
 import LearnKhmer from "../pages/LearnKhmerPage"
 import NameConverter from "../pages/NameConverter"
-import NotFoundPage from "../pages/NotFoundPage"
 import { AppLinkType, CardDataType } from "./types"
 import SpeakingPracticePage from "@/pages/SpeakingPracticePage"
+import { PageNotFound } from "@/pages/PageNotFound"
 
 export const appLinks: AppLinkType[] = [
+    // {
+    //     displayName: "Home",
+    //     location: "/",
+    //     component: <Home />,
+    //     isEnabled: false
+    // },
+    {
+        displayName: "Khmer Spelling Practice",
+        location: "/",
+        component: <KhmerWordPractice />,
+        isEnabled: true
+    },
     {
         displayName: "Login",
         location: "/login",
         component: <LoginAmplifyAuth />,
         isEnabled: true
-    },
-    {
-        displayName: "Home",
-        location: "/",
-        component: <Home />,
-        isEnabled: false
     },
     {
         displayName: "Learn Khmer",
@@ -32,23 +38,17 @@ export const appLinks: AppLinkType[] = [
         component: <NameConverter />,
         isEnabled: false
     },
-    {
-        displayName: "Khmer Spelling Practice",
-        location: "/",
-        component: <KhmerWordPractice />,
-        isEnabled: true
-    },
+
     {
         displayName: "Khmer Spelling Practice",
         location: "/speakingPractice",
         component: <SpeakingPracticePage />,
         isEnabled: true
     },
-
     {
         displayName: '',
         location: "/*",
-        component: <NotFoundPage />,
+        component: <PageNotFound />,
         isEnabled: true
     }
 ]
