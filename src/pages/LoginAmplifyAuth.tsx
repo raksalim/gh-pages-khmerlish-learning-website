@@ -3,7 +3,6 @@ import { Authenticator } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import outputs from '../../amplify_outputs.json';
 import { Button } from '@mui/material';
-import { useEffect } from 'react';
 import { AuthUser } from 'aws-amplify/auth';
 
 
