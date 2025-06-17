@@ -7,7 +7,6 @@ import { useState } from "react";
 import { khmerVowels, khmerVowelsThatDontChange } from "../data/khmer/khmerVowels";
 import { khmerConsonantsForRatTeeth } from "../data/khmer/khmerConsonant";
 import { s3BucketBaseUrl } from "@/data/const";
-import { getUserEmail } from "@/utils/authUtils";
 
 export const KhmerWordPractice = () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
@@ -17,7 +16,6 @@ export const KhmerWordPractice = () => {
     const [vowel, setVowel] = useState<string>('ា')
     const [isAh, setIsAh] = useState<boolean>(true)
     const [fullWord, setFullWord] = useState<string>('')
-    const [userEmail, setUserEmail] = useState<string | boolean>('')
 
     const s3LetterSoundBaseUrl = `${s3BucketBaseUrl}/sound/khmer`
 
@@ -32,16 +30,8 @@ export const KhmerWordPractice = () => {
     }
     const formatIdx = (idx: number) => idx <= 9 ? `0${idx}` : `${idx}`;
 
-    getUserEmail().then((email) => {
-        console.log("email", email)
-        setUserEmail(email)
-    }).catch((e) => {
-        console.warn("fetchAuthSession error", e)
-    })
-
     return (
         <div style={{ maxWidth: '1130px', margin: 'auto' }}>
-            <>{userEmail}</>
             <style>
                 {`
                     @media (max-width: 1130px) {
@@ -52,7 +42,7 @@ export const KhmerWordPractice = () => {
                         .word-container {
                             position: sticky;
                             top: 0;
-                            z-index: 1000;
+                            z-index: 1;
                             padding: 10px;
                             background-color: white;
                             font-size: 50px;
