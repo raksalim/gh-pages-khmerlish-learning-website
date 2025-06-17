@@ -1,15 +1,17 @@
 import './App.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
-import { appLinks } from './data/data'
 import SideNav from './components/SideNav'
 import { getUserEmail } from './utils/authUtils'
 import { useState } from 'react'
+import { KhmerWordPractice } from './pages/KhmerWordPractice'
+import LoginAmplifyAuth from './pages/LoginAmplifyAuth'
+import SpeakingPracticePage from './pages/SpeakingPracticePage'
+import { PageNotFound } from './pages/PageNotFound'
 
 function App() {
   const [userEmail, setUserEmail] = useState<string | boolean>('')
 
-  
   getUserEmail().then((email) => {
     console.log("email", email)
     setUserEmail(email)
@@ -17,15 +19,14 @@ function App() {
     console.warn("fetchAuthSession error", e)
   })
   return (<div className='appContainer'>
-    {/* <Header /> */}
     <BrowserRouter>
-      <SideNav userEmail={userEmail} />
+      <SideNav userEmail={userEmail} setUserEmail={setUserEmail} />
       <div style={{ display: 'flex' }}>
-        {/* <NavBar /> */}
         <Routes>
-          {appLinks.filter((link) => link.isEnabled).map((link, idx) =>
-            <Route key={idx} path={link.location} element={link.component} />
-          )}
+          <Route path="/" element={<KhmerWordPractice />} />
+          <Route path="/login" element={<LoginAmplifyAuth userEmail={userEmail} setUserEmail={setUserEmail} />} />
+          <Route path="/speakingPractice" element={<SpeakingPracticePage />} />
+          <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,57 +1,5 @@
-import LoginAmplifyAuth from "@/pages/LoginAmplifyAuth"
-import Home from "../pages/Home"
-import { KhmerWordPractice } from "../pages/KhmerWordPractice"
-import LearnKhmer from "../pages/LearnKhmerPage"
-import NameConverter from "../pages/NameConverter"
-import { AppLinkType, CardDataType } from "./types"
-import SpeakingPracticePage from "@/pages/SpeakingPracticePage"
-import { PageNotFound } from "@/pages/PageNotFound"
+import { CardDataType } from "./types"
 
-export const appLinks: AppLinkType[] = [
-    {
-        displayName: "Home",
-        location: "/",
-        component: <Home />,
-        isEnabled: false
-    },
-    {
-        displayName: "Khmer Spelling Practice",
-        location: "/",
-        component: <KhmerWordPractice />,
-        isEnabled: true
-    },
-    {
-        displayName: "Login",
-        location: "/login",
-        component: <LoginAmplifyAuth />,
-        isEnabled: true
-    },
-    {
-        displayName: "Learn Khmer",
-        location: "/learnKhmer",
-        component: <LearnKhmer />,
-        isEnabled: false
-    },
-    {
-        displayName: "Name Converter",
-        location: "/nameConverter",
-        component: <NameConverter />,
-        isEnabled: false
-    },
-
-    {
-        displayName: "Khmer Spelling Practice",
-        location: "/speakingPractice",
-        component: <SpeakingPracticePage />,
-        isEnabled: true
-    },
-    {
-        displayName: '',
-        location: "/*",
-        component: <PageNotFound />,
-        isEnabled: true
-    }
-]
 
 
 // export const khmerVideosTsv = `title	description	youtubeLink	youtubeEbeddedLink	datePublished	googleDriveLink	pdfDownloadLink

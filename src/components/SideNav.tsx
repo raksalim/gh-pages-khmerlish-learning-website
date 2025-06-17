@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import LoginAmplifyAuth from '@/pages/LoginAmplifyAuth';
 
 type SideNavProps = {
-    userEmail?: string | boolean;
+    userEmail: string | boolean;
+    setUserEmail: (email: string | boolean) => void;
 };
-export default function SideNav({ userEmail }: SideNavProps) {
+export default function SideNav({ userEmail, setUserEmail }: SideNavProps) {
     const [toggled, setToggled] = useState(false);
     const isMobile = window.matchMedia('(max-width: 800px)').matches;
 
@@ -17,7 +18,7 @@ export default function SideNav({ userEmail }: SideNavProps) {
                 onBackdropClick={() => setToggled(false)}
                 toggled={toggled}
                 breakPoint="always"
-                rtl
+
                 className='sidenav'
                 rootStyles={{
                     [`.${sidebarClasses.container}`]: {
@@ -26,14 +27,14 @@ export default function SideNav({ userEmail }: SideNavProps) {
                         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                         borderRight: '1px solid rgba(255, 255, 255, 0.3)',
                         width: isMobile
-                            ? '100%'
+                            ? (!userEmail && toggled) ? '130%' : '250px'
                             : (!userEmail && toggled)
                                 ? '500px'
                                 : userEmail
                                     ? '250px'
                                     : '250px',
-                        transition: 'width .5s ease-in-out',
-                        opacity: 0.95, // add a bit more transparency
+                        transitionDuration: '500ms',
+                        opacity: 0.95, // add a bit more transparency,
                     },
                     ['.' + menuClasses.button]: {
                         '&:hover': {
@@ -44,6 +45,7 @@ export default function SideNav({ userEmail }: SideNavProps) {
                         },
                     },
                 }}
+                rtl
             >
                 <Menu>
                     <MenuItem disabled style={{ color: '#939292' }}>{userEmail}</MenuItem>
@@ -59,7 +61,7 @@ export default function SideNav({ userEmail }: SideNavProps) {
                             </MenuItem>
                         </div>
                         :
-                        <LoginAmplifyAuth isNested />
+                            <LoginAmplifyAuth isNested userEmail={userEmail} setUserEmail={setUserEmail} />
                     }
                 </Menu>
             </Sidebar >
