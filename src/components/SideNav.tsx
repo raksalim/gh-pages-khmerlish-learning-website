@@ -49,10 +49,10 @@ export default function SideNav({ userEmail }: SideNavProps) {
                     <MenuItem component={<Link to="/" />} onClick={() => { setToggled(!toggled) }}>Home</MenuItem>
                     <MenuItem component={<Link to="/speakingPractice" />} onClick={() => { setToggled(!toggled) }}>Speaking</MenuItem>
                     <MenuItem component={<Link to="/" />} onClick={() => { setToggled(!toggled) }}>Reading</MenuItem>
-                    <MenuItem component={<Link to="/documentation" />} onClick={() => { setToggled(!toggled) }}>Entertainment</MenuItem>
+                    {/* <MenuItem component={<Link to="/documentation" />} onClick={() => { setToggled(!toggled) }}>Entertainment</MenuItem> */}
                     {userEmail
                         ?
-                        <div style={{ position: 'absolute', bottom: 0 }}>
+                        <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
                             <MenuItem component={<Link to="/login" />} onClick={() => { setToggled(!toggled) }}>
                                 Sign Out
                             </MenuItem>

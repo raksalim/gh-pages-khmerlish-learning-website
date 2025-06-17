@@ -8,12 +8,12 @@ import SpeakingPracticePage from "@/pages/SpeakingPracticePage"
 import { PageNotFound } from "@/pages/PageNotFound"
 
 export const appLinks: AppLinkType[] = [
-    // {
-    //     displayName: "Home",
-    //     location: "/",
-    //     component: <Home />,
-    //     isEnabled: false
-    // },
+    {
+        displayName: "Home",
+        location: "/",
+        component: <Home />,
+        isEnabled: false
+    },
     {
         displayName: "Khmer Spelling Practice",
         location: "/",
