@@ -16,13 +16,17 @@ export function Header({ isToggled, setToggled }: { isToggled?: boolean; setTogg
 
     return (
         <HeaderContainer>
-            {companyName}
+            <span
+                style={{ cursor: 'pointer', marginRight: '10px' }}
+                onClick={() => window.location.href = '/'}
+            > {companyName}
+            </span>
             <img
                 src={khmerlishLogo}
                 alt="Khmerlish Logo"
                 style={{ width: '50px', height: '50px', marginRight: '10px' }}
-                onClick={() => setToggled(!isToggled)} 
-                />
+                onClick={() => setToggled(!isToggled)}
+            />
         </HeaderContainer>
     )
 }

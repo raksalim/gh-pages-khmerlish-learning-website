@@ -21,7 +21,7 @@ export default function SideNav({ userEmail }: SideNavProps) {
                 className='sidenav'
                 rootStyles={{
                     [`.${sidebarClasses.container}`]: {
-                        background: 'rgba(255, 255, 255, 0.3)',
+                        background: 'linear-gradient(50deg,rgba(254, 233, 233, 0.85) 0%, rgba(222, 246, 255, 0.649) 15%, rgba(222, 246, 255, 0.649) 30%, rgba(255, 249, 224, 0.85) 100%)',
                         backdropFilter: 'blur(9px)',
                         boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                         borderRight: '1px solid rgba(255, 255, 255, 0.3)',
@@ -33,10 +33,11 @@ export default function SideNav({ userEmail }: SideNavProps) {
                                     ? '250px'
                                     : '250px',
                         transition: 'width .5s ease-in-out',
+                        opacity: 0.95, // add a bit more transparency
                     },
                     ['.' + menuClasses.button]: {
                         '&:hover': {
-                            background: 'rgba(255, 255, 255, 0.3)',
+                            background: 'rgba(255, 255, 255, 0.656)',
                             backdropFilter: 'blur(10px)',
                             boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)',
                             borderRight: '1px solid rgba(255, 255, 255, 0.3)',
