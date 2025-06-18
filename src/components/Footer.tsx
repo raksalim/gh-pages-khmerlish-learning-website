@@ -10,7 +10,7 @@ const FooterContainer = styled.div`
 `;
 
 const Flex = styled.div`
-  padding: 10px 20px 10px 20px;
+  margin: 10px 20px 10px 20px;
   display: flex;
   justify-content: center;
 `;

@@ -10,23 +10,36 @@ const s3WordSoundBaseUrl = `${s3BucketBaseUrl}/sounds/words`;
 // const khmerS3WordSoundBaseUrl = `${s3WordSoundBaseUrl}/khmer`;
 // const englishS3WordSoundBaseUrl = `${s3WordSoundBaseUrl}/english`;
 
+export const commonSayings: string[] = [
+	'hello (formal)',
+	'hello (informal)',
+	'thank you',
+	'yes (m)',
+	'yes (f)',
+	'no',
+	'sorry',
+	'how are you?',
+	'goodbye',
+];
+
 export const subjectWords: string[] = [
 	'I',
 	'you',
 	'her',
 	'him',
 	'they',
-	'them',
-	'us',
+	'us/we',
 ];
 export const verbsWords: string[] = [
 	'',
+	'can',
 	'want',
+	'try',
 	'like',
 	'need',
-	'try',
-	'plan',
-	'hope',
+	'love',
+	// 'plan',
+	// 'hope',
 	// "prefer",
 	// "decide",
 	// "expect",
@@ -55,43 +68,57 @@ export const adjectivesWords: string[] = [
 ];
 export const infiniteVerbsWords: string[] = [
 	'',
+	'buy',
 	'read',
+	'learn',
 	'eat',
-	'run',
-	// 'jump',
-	'swim',
-	'dance',
-	'play',
-	'work',
-	'study',
-	'sleep',
-	'drink',
-	'write',
 	'find',
+	'go',
+	'understand',
+	'drink',
+	// 'run',
+	// 'swim',
+	// 'dance',
+	// 'play',
+	// 'work',
+	// 'study',
+	// 'sleep',
+	// 'write',
 ];
 export const nounsWords: string[] = [
 	'',
-	'rice',
 	'book',
-	'car',
-	'house',
-	'cat',
-	'dog',
-	'computer',
-	'school',
-	'city',
-	'drink',
+	'khmer language',
+	'rice',
+	'home',
+	'hotel',
 	'food',
+	'school',
 	'water',
-	'people',
-	'thing',
+	'phone',
+	'medicine',
+	'bathroom',
+	// 'car',
+	// 'house',
+	// 'cat',
+	// 'dog',
+	// 'computer',
+	// 'city',
+	// 'drink',
+	// 'people',
+	// 'thing',
 ];
 
-export const englishToKhmerWords: Record<string, Word> = {
+export const englishToKhmerDict: Record<string, Word> = {
 	bad: {
 		khmer: 'អាក្រក់',
 		khmerlish: 'akrok',
 		english: 'bad',
+	},
+	bathroom: {
+		khmer: 'បន្ទប់ទឹក',
+		khmerlish: 'bantup tuk',
+		english: 'bathroom',
 	},
 	big: {
 		khmer: 'ធំ',
@@ -102,6 +129,16 @@ export const englishToKhmerWords: Record<string, Word> = {
 		khmer: 'សៀវភៅ',
 		khmerlish: 'siephov',
 		english: 'book',
+	},
+	buy: {
+		khmer: 'ទិញ',
+		khmerlish: 'ting',
+		english: 'buy',
+	},
+	can: {
+		khmer: 'អាច',
+		khmerlish: 'ach',
+		english: 'can',
 	},
 	car: {
 		khmer: 'ឡាន',
@@ -135,12 +172,12 @@ export const englishToKhmerWords: Record<string, Word> = {
 	},
 	drink: {
 		khmer: 'ផឹក',
-		khmerlish: 'phak',
+		khmerlish: 'phok',
 		english: 'drink',
 	},
 	eat: {
-		khmer: 'បរិច្ឆេទ',
-		khmerlish: 'boreichhet',
+		khmer: 'ញុំា',
+		khmerlish: 'nham',
 		english: 'eat',
 	},
 	fast: {
@@ -149,9 +186,19 @@ export const englishToKhmerWords: Record<string, Word> = {
 		english: 'fast',
 	},
 	find: {
-		khmer: 'រកឃើញ',
-		khmerlish: 'rok khernh',
+		khmer: 'រក',
+		khmerlish: 'rok',
 		english: 'find',
+	},
+	food: {
+		khmer: 'ម្ហូប',
+		khmerlish: 'mhoop',
+		english: 'food',
+	},
+	go: {
+		khmer: 'ទៅ',
+		khmerlish: 'tov',
+		english: 'go',
 	},
 	good: {
 		khmer: 'ល្អ',
@@ -173,10 +220,20 @@ export const englishToKhmerWords: Record<string, Word> = {
 		khmerlish: 'koat',
 		english: 'him',
 	},
+	home: {
+		khmer: 'ផ្ទះ',
+		khmerlish: 'phteah',
+		english: 'home',
+	},
 	hope: {
 		khmer: 'សង្ឃឹម',
 		khmerlish: 'sangkhim',
 		english: 'hope',
+	},
+	hotel: {
+		khmer: 'អូតែល',
+		khmerlish: 'otel',
+		english: 'hotel',
 	},
 	house: {
 		khmer: 'ផ្ទះ',
@@ -190,18 +247,38 @@ export const englishToKhmerWords: Record<string, Word> = {
 	},
 	jump: {
 		khmer: 'លោត',
-		khmerlish: 'lot luh',
-		english: 'jump on',
+		khmerlish: 'lot',
+		english: 'jump',
+	},
+	learn: {
+		khmer: 'រៀន',
+		khmerlish: 'rean',
+		english: 'learn',
 	},
 	like: {
 		khmer: 'ចូលចិត្ត',
 		khmerlish: 'cholchet',
 		english: 'like',
 	},
+	love: {
+		khmer: 'ស្រឡាញ់',
+		khmerlish: 'sralanh',
+		english: 'love',
+	},
+	medicine: {
+		khmer: 'ថ្នាំ',
+		khmerlish: 'thnam',
+		english: 'medicine',
+	},
 	need: {
 		khmer: 'ត្រូវការ',
 		khmerlish: 'trovkar',
 		english: 'need',
+	},
+	phone: {
+		khmer: 'ទូរស័ព្ទ',
+		khmerlish: 'turasap',
+		english: 'phone',
 	},
 	plan: {
 		khmer: 'ផែនការ',
@@ -278,15 +355,25 @@ export const englishToKhmerWords: Record<string, Word> = {
 		khmerlish: 'pyayiem',
 		english: 'try',
 	},
-	us: {
+	'us/we': {
 		khmer: 'យើង',
-		khmerlish: 'yeung',
-		english: 'us',
+		khmerlish: 'yung',
+		english: 'us/we',
+	},
+	understand: {
+		khmer: 'យល់',
+		khmerlish: 'yol',
+		english: 'understand',
 	},
 	want: {
 		khmer: 'ចង់',
 		khmerlish: 'chang',
 		english: 'want',
+	},
+	water: {
+		khmer: 'ទឹក',
+		khmerlish: 'tuk',
+		english: 'water',
 	},
 	work: {
 		khmer: 'ធ្វើការ',
@@ -294,8 +381,8 @@ export const englishToKhmerWords: Record<string, Word> = {
 		english: 'work',
 	},
 	write: {
-		khmer: '',
-		khmerlish: '',
+		khmer: 'សរសេរ',
+		khmerlish: 'sorsae',
 		english: 'write',
 	},
 	you: {
@@ -303,6 +390,64 @@ export const englishToKhmerWords: Record<string, Word> = {
 		khmerlish: 'anak',
 		english: 'you',
 	},
+};
+
+export const englishPhraseToKhmer: Record<string, Word> = {
+	goodbye: {
+		khmer: 'លាហើយ',
+		khmerlish: 'leahaey',
+		english: 'goodbye',
+	},
+	'hello (formal)': {
+		khmer: 'សួស្តី',
+		khmerlish: 'suosdey',
+		english: 'hello (formal)',
+	},
+	'hello (informal)': {
+		khmer: 'ជំរាបសួរ',
+		khmerlish: 'chomreabsuor',
+		english: 'hello (informal)',
+	},
+	'how are you?': {
+		khmer: 'សុខសប្បាយទេ?',
+		khmerlish: 'sok sabbay te?',
+		english: 'how are you?',
+	},
+	'khmer language': {
+		khmer: 'ភាសាខ្មែរ',
+		khmerlish: 'pheasa khmer',
+		english: 'khmer language',
+	},
+	no: {
+		khmer: 'ទេ',
+		khmerlish: 'te',
+		english: 'no',
+	},
+	sorry: {
+		khmer: 'សុំទោស',
+		khmerlish: 'somtoh',
+		english: 'sorry',
+	},
+	'thank you': {
+		khmer: 'អរគុណ',
+		khmerlish: 'arkun',
+		english: 'thank you',
+	},
+	'yes (f)': {
+		khmer: 'ចាស',
+		khmerlish: 'cha',
+		english: 'yes (f)',
+	},
+	'yes (m)': {
+		khmer: 'បាទ',
+		khmerlish: 'bat',
+		english: 'yes (m)',
+	},
+};
+
+export const englishToKhmerWords: Record<string, Word> = {
+	...englishToKhmerDict,
+	...englishPhraseToKhmer,
 };
 
 export const englishToKhmerWordsWithSound: Record<
