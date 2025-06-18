@@ -29,23 +29,23 @@ const levelsSettings: Record<string, LevelSetting> = {
     },
     Subject: {
         pickerLanguage: "english",
-        buttonLanguage: "khmer"
+        buttonLanguage: "khmerlish"
     },
     Verbs: {
         pickerLanguage: "english",
-        buttonLanguage: "khmer"
+        buttonLanguage: "khmerlish"
     },
     Objects: {
         pickerLanguage: "english",
-        buttonLanguage: "khmer"
+        buttonLanguage: "khmerlish"
     },
     Sentence: {
         pickerLanguage: "english",
-        buttonLanguage: "khmer"
+        buttonLanguage: "khmerlish"
     },
     Khmerlish: {
         pickerLanguage: "khmer",
-        buttonLanguage: "khmerlish"
+        buttonLanguage: "english"
     },
     Khmer: {
         pickerLanguage: "khmer",
@@ -104,24 +104,8 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
         setButtonLanguage(levelsSettings[speakingPracticeDifficultyScale[difficultyLevel].label].buttonLanguage);
     }, [difficultyLevel]);
 
-    return <div className='container'>
-        <Box style={{ minHeight: 400 }}>
-            <div
-                style={{
-                    transition: 'opacity .3s',
-                    opacity: difficultyLevel <= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") ? 1 : 0,
-                    height: difficultyLevel <= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") ? 'auto' : 0,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    textAlign: 'center',
-                }}
-            >
-                <h2 className='hanuman-title'>
-                    Speaking Practice
-                </h2>
-            </div>
-
+    return (
+        <div className='container'>
             <div style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '16px' }}>
                 {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Subject") && <WordPickerPlayButton
                     label="Subject"
@@ -207,8 +191,9 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                         onChange={() => { setIsKhmerSwitch(!isKhmerSwitch); console.log(isKhmerSwitch) }}
                     />}
             </div>
-        </Box>
-    </div >;
+        </div >
+
+    )
 };
 
 export default BasicSentencePractice;
