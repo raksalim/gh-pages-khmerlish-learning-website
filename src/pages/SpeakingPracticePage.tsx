@@ -1,23 +1,6 @@
-import DifficultyLevel, { DifficultySliderOption } from '@/components/DifficultyLevel';
-import { WordPickerPlayButton } from '@/components/WordPickerPlayButton';
-import { englishToKhmerWords, infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from '@/data/khmerlish/DictOfWords';
-import { arrWordsToLabels } from '@/utils/arrWordsToLabels';
+import DifficultyLevel from '@/components/DifficultyLevel';
 import React, { useState } from 'react';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { Box, Button } from '@mui/material';
-import BasicSentencePractice from '@/components/BasicSentencePractice';
-
-const speakingPracticeDifficultyScale: DifficultySliderOption[] = [
-    { value: 0, label: "Intro" },
-    { value: 1, label: "Tutorial" },
-    { value: 2, label: "Subject" },
-    { value: 3, label: "Verbs" },
-    { value: 4, label: "Objects" },
-    { value: 5, label: "Sentence" },
-    { value: 6, label: "Khmerlish" },
-    { value: 7, label: "Khmer" },
-    { value: 8, label: "Practice" },
-];
+import BasicSentencePractice, { speakingPracticeDifficultyScale } from '@/components/BasicSentencePractice';
 
 const SpeakingPracticePage: React.FC = () => {
     const [difficultyLevel, setDifficultyLevel] = useState<number>(0);
@@ -40,7 +23,18 @@ const SpeakingPracticePage: React.FC = () => {
                     scaleValue={difficultyLevel}
                 />
             </div>
+            <div
+                id="paypal-container-LUK4VKR8CTMYU"
+                style={{
+                    opacity: difficultyLevel >= 3 ? 1 : 0,
+                    height: difficultyLevel >= 3 ? 'auto' : 0,
+                    overflow: 'hidden',
+                    transition: 'opacity 0.8s, width 0.5s'
+                }}
+            />
+
         </div>
+
     );
 };
 

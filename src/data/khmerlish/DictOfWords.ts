@@ -88,7 +88,7 @@ export const infiniteVerbsWords: string[] = [
 export const nounsWords: string[] = [
 	'',
 	'book',
-	'khmer language',
+	'khmer',
 	'rice',
 	'home',
 	'hotel',
@@ -244,6 +244,11 @@ export const englishToKhmerDict: Record<string, Word> = {
 		khmer: 'ខ្ញុំ',
 		khmerlish: 'khnhom',
 		english: 'I',
+	},
+	khmer: {
+		khmer: 'ខ្មែរ',
+		khmerlish: 'khmer',
+		english: 'khmer',
 	},
 	jump: {
 		khmer: 'លោត',

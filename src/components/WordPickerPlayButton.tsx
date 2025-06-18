@@ -20,13 +20,13 @@ type WordPickerPlayButtonProps = {
 
 export function WordPickerPlayButton({ label, pickerLabelsDict, pickerValue, setPickerValue, pickerLanguage = 'english', buttonLanguage = 'khmer', className }: WordPickerPlayButtonProps) {
 
-
     return (
         <div
             className={`wheel-picker-wrapper-custom ${className}`}
         >
-            {label && <div>
-                <span className="clamp-size">
+            {label && 
+            <div>
+                <span className="clamp-size hanuman-body">
                     {label}
                 </span>
             </div>}

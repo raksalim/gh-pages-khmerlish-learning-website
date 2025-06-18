@@ -1,14 +1,72 @@
-import DifficultyLevel, { DifficultySliderOption } from '@/components/DifficultyLevel';
+import { DifficultySliderOption } from '@/components/DifficultyLevel';
 import { WordPickerPlayButton } from '@/components/WordPickerPlayButton';
 import { englishToKhmerWords, infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from '@/data/khmerlish/DictOfWords';
 import { arrWordsToLabels } from '@/utils/arrWordsToLabels';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Box, Button } from '@mui/material';
 import { KhmerOrEnglishButton } from './KhmerOrEnglishButton';
-import { lightBlue } from '@mui/material/colors';
+import SponsorKhmerlishButton from './SponsorKhmerlishButton';
 
-interface BasicSentencePracticeProps {
+type languageOptions = 'english' | 'khmer' | 'khmerlish';
+type LevelSetting = {
+    pickerLanguage: languageOptions;
+    buttonLanguage: languageOptions;
+};
+
+const levelsSettings: Record<string, LevelSetting> = {
+    Intro: {
+        pickerLanguage: "english",
+        buttonLanguage: "khmer"
+    },
+    Tutorial: {
+        pickerLanguage: "english",
+        buttonLanguage: "khmer"
+    },
+    ['Common Phrases']: {
+        pickerLanguage: "english",
+        buttonLanguage: "khmer"
+    },
+    Subject: {
+        pickerLanguage: "english",
+        buttonLanguage: "khmer"
+    },
+    Verbs: {
+        pickerLanguage: "english",
+        buttonLanguage: "khmer"
+    },
+    Objects: {
+        pickerLanguage: "english",
+        buttonLanguage: "khmer"
+    },
+    Sentence: {
+        pickerLanguage: "english",
+        buttonLanguage: "khmer"
+    },
+    Khmerlish: {
+        pickerLanguage: "khmer",
+        buttonLanguage: "khmerlish"
+    },
+    Khmer: {
+        pickerLanguage: "khmer",
+        buttonLanguage: "khmer"
+    },
+    Practice: {
+        pickerLanguage: "khmer",
+        buttonLanguage: "khmer"
+    },
+    ['Extra Practice']: {
+        pickerLanguage: "khmer",
+        buttonLanguage: "khmer"
+    },
+};
+
+export const speakingPracticeDifficultyScale: DifficultySliderOption[] = Object.keys(levelsSettings).map((label, value) => ({
+    value,
+    label,
+}));
+
+type BasicSentencePracticeProps = {
     difficultyLevel: number;
     setDifficultyLevel: React.Dispatch<React.SetStateAction<number>>;
     speakingPracticeDifficultyScale: DifficultySliderOption[];
@@ -20,6 +78,8 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
     speakingPracticeDifficultyScale,
     isAlphabetize = false
 }) => {
+    const [isKhmerSwitch, setIsKhmerSwitch] = useState<boolean>(true);
+
     const subject = arrWordsToLabels(subjectWords);
     const verb = arrWordsToLabels(verbsWords, isAlphabetize);
     const infiniteVerb = arrWordsToLabels(infiniteVerbsWords, isAlphabetize);
@@ -31,44 +91,37 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
     const [infiniteVerbValue, setInfiniteVerbValue] = useState<string>(infiniteVerb.khmerLabels[0].value);
     const [nounsValue, setNounsValue] = useState<string>(nouns.khmerLabels[0].value);
 
+    const [pickerLanguage, setPickerLanguage] = useState<languageOptions>('english');
+    const [buttonLanguage, setButtonLanguage] = useState<languageOptions>('khmer');
+
     const pickerValues = [subjectValue, verbValue, infiniteVerbValue, nounsValue];
 
+    useEffect(() => {
+        if (difficultyLevel <= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Practice")) {
+            setIsKhmerSwitch(true)
+        }
+        setPickerLanguage(levelsSettings[speakingPracticeDifficultyScale[difficultyLevel].label].pickerLanguage);
+        setButtonLanguage(levelsSettings[speakingPracticeDifficultyScale[difficultyLevel].label].buttonLanguage);
+    }, [difficultyLevel]);
+
     return <div className='container'>
-        {/* <Box display="flex" alignItems="center" mb={2}>
-            <span style={{ marginRight: 8 }}>Alphabetize</span>
-            <Button
-                variant={isAlphabetize ? "contained" : "outlined"}
-                color="primary"
-                size="small"
-                onClick={() => {
-                    // This component does not control isAlphabetize, so you may want to lift state up if needed.
-                    // If you want to control it here, add setIsAlphabetize to props and call it here.
-                }}
-                disabled
-                style={{ minWidth: 40 }}
-            >
-                {isAlphabetize ? "On" : "Off"}
-            </Button>
-        </Box> */}
-        <KhmerOrEnglishButton />
         <Box style={{ minHeight: 400 }}>
             <div
                 style={{
-                    transition: 'opacity 0.5s',
-                    opacity: difficultyLevel > speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") ? 0 : 1,
-                    pointerEvents: difficultyLevel > speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Subject") ? 'none' : 'auto',
+                    transition: 'opacity .3s',
+                    opacity: difficultyLevel <= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") ? 1 : 0,
+                    height: difficultyLevel <= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") ? 'auto' : 0,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
                 }}
             >
-                <h1 style={{
-                    textAlign: 'center',
-                    margin: 5,
-                    fontWeight: 500,
-                    fontSize: '2.2rem',
-                    letterSpacing: '0.01em'
-                }} className='hanuman-title'>
+                <h2 className='hanuman-title'>
                     Speaking Practice
-                </h1>
+                </h2>
             </div>
+
             <div style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '16px' }}>
                 {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Subject") && <WordPickerPlayButton
                     label="Subject"
@@ -76,17 +129,17 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                     pickerValue={subjectValue}
                     setPickerValue={setSubjectValue}
                     pickerLabelsDict={subject}
-                    buttonLanguage="khmer"
-                    pickerLanguage="english"
+                    pickerLanguage={isKhmerSwitch ? pickerLanguage : 'english'}
+                    buttonLanguage={buttonLanguage}
                 />}
-                {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Sentence") && <WordPickerPlayButton
+                {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Extra Practice") && <WordPickerPlayButton
                     label="Verb"
                     difficultyLevel={difficultyLevel}
                     pickerValue={verbValue}
                     setPickerValue={setVerbValue}
                     pickerLabelsDict={verb}
-                    buttonLanguage="khmer"
-                    pickerLanguage="english"
+                    pickerLanguage={isKhmerSwitch ? pickerLanguage : 'english'}
+                    buttonLanguage={buttonLanguage}
                 />
                 }
                 {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Verbs") && <WordPickerPlayButton
@@ -95,8 +148,8 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                     pickerValue={infiniteVerbValue}
                     setPickerValue={setInfiniteVerbValue}
                     pickerLabelsDict={infiniteVerb}
-                    buttonLanguage="khmer"
-                    pickerLanguage="english"
+                    pickerLanguage={isKhmerSwitch ? pickerLanguage : 'english'}
+                    buttonLanguage={buttonLanguage}
 
                 />}
                 {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Objects") && <WordPickerPlayButton
@@ -105,12 +158,12 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                     pickerValue={nounsValue}
                     setPickerValue={setNounsValue}
                     pickerLabelsDict={nouns}
-                    buttonLanguage="khmer"
-                    pickerLanguage="english"
+                    pickerLanguage={isKhmerSwitch ? pickerLanguage : 'english'}
+                    buttonLanguage={buttonLanguage}
                 />}
             </div>
 
-            {difficultyLevel > speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") && (<div style={{ width: '100%', marginTop: '5px' }}>
+            {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Subject") && (<div style={{ width: '100%', marginTop: '5px' }}>
                 <Button
                     variant="outlined"
                     color="primary"
@@ -126,13 +179,13 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                     <PlayArrowIcon />
                     <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
                         <div>
-                            {pickerValues.map((value) => (
-                                <span key={value}>{englishToKhmerWords[value]?.khmer}</span>
+                            {pickerValues.map((value, idx) => (
+                                <span key={idx}>{englishToKhmerWords[value]?.khmer}</span>
                             ))}
                         </div>
                         <div>
-                            {pickerValues.map((value) => (
-                                <span key={value} style={{ fontSize: '11px', color: 'gray' }} >
+                            {pickerValues.map((value, idx) => (
+                                <span key={idx} style={{ fontSize: '11px', color: 'gray' }} >
                                     {`${englishToKhmerWords[value]?.khmerlish ? englishToKhmerWords[value]?.khmerlish : ''} `}
                                 </span>
                             ))}
@@ -141,6 +194,19 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                 </Button>
             </div>)
             }
+            <div style={{
+                display: 'flex',
+                justifyContent: 'flex-end',
+                alignContent: 'center',
+                marginTop: '10px',
+                width: '100%',
+            }}>
+                {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Practice")
+                    && <KhmerOrEnglishButton
+                        checked={isKhmerSwitch}
+                        onChange={() => { setIsKhmerSwitch(!isKhmerSwitch); console.log(isKhmerSwitch) }}
+                    />}
+            </div>
         </Box>
     </div >;
 };

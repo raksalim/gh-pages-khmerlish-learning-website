@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Switch, { SwitchProps } from '@mui/material/Switch';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
+import Switch from '@mui/material/Switch';
 
 export const KhmerOrEnglishButton = styled(Switch)(({ theme }) => ({
     width: 62,
@@ -18,13 +14,16 @@ export const KhmerOrEnglishButton = styled(Switch)(({ theme }) => ({
             color: '#fff',
             transform: 'translateX(22px)',
             '& .MuiSwitch-thumb:before': {
-                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><text x="2" y="15" font-size="13" font-family="Arial" fill="${encodeURIComponent(
+                borderRadius: 20,
+                backgroundColor: '#1976D2',
+
+                backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><text x="6" y="13" font-size="13" font-family="Arial" fill="${encodeURIComponent(
                     '#fff',
-                )}">Aa</text></svg>')`,
+                )}">ក្ក</text></svg>')`,
             },
             '& + .MuiSwitch-track': {
                 opacity: 1,
-                backgroundColor: '#aab4be',
+                backgroundColor: '#75b0ef',
                 ...theme.applyStyles('dark', {
                     backgroundColor: '#8796A5',
                 }),
@@ -32,10 +31,11 @@ export const KhmerOrEnglishButton = styled(Switch)(({ theme }) => ({
         },
     },
     '& .MuiSwitch-thumb': {
-        backgroundColor: '#001e3c',
         width: 32,
         height: 32,
         '&::before': {
+            borderRadius: 20,
+            backgroundColor: '#EFA333',
             content: "''",
             position: 'absolute',
             width: '100%',
@@ -44,9 +44,9 @@ export const KhmerOrEnglishButton = styled(Switch)(({ theme }) => ({
             top: 0,
             backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
-            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><text x="6" y="13" font-size="13" font-family="Arial" fill="${encodeURIComponent(
+            backgroundImage: `url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 20 20"><text x="2" y="15" font-size="13" font-family="Arial" fill="${encodeURIComponent(
                 '#fff',
-            )}">ក្ក</text></svg>')`,
+            )}">Aa</text></svg>')`,
         },
         ...theme.applyStyles('dark', {
             backgroundColor: '#003892',
@@ -54,7 +54,7 @@ export const KhmerOrEnglishButton = styled(Switch)(({ theme }) => ({
     },
     '& .MuiSwitch-track': {
         opacity: 1,
-        backgroundColor: '#aab4be',
+        backgroundColor: '#f5c987',
         borderRadius: 20 / 2,
         ...theme.applyStyles('dark', {
             backgroundColor: '#8796A5',
