@@ -10,7 +10,7 @@ const s3WordSoundBaseUrl = `${s3BucketBaseUrl}/sounds/words`;
 // const khmerS3WordSoundBaseUrl = `${s3WordSoundBaseUrl}/khmer`;
 // const englishS3WordSoundBaseUrl = `${s3WordSoundBaseUrl}/english`;
 
-export const commonSayings: string[] = [
+export const commonSayingsList: string[] = [
 	'hello (formal)',
 	'hello (informal)',
 	'thank you',
@@ -392,7 +392,7 @@ export const englishToKhmerDict: Record<string, Word> = {
 	},
 	you: {
 		khmer: 'អ្នក',
-		khmerlish: 'anak',
+		khmerlish: 'nak',
 		english: 'you',
 	},
 };
@@ -403,12 +403,12 @@ export const englishPhraseToKhmer: Record<string, Word> = {
 		khmerlish: 'leahaey',
 		english: 'goodbye',
 	},
-	'hello (formal)': {
+	'hello (informal)': {
 		khmer: 'សួស្តី',
 		khmerlish: 'suosdey',
 		english: 'hello (formal)',
 	},
-	'hello (informal)': {
+	'hello (formal)': {
 		khmer: 'ជំរាបសួរ',
 		khmerlish: 'chomreabsuor',
 		english: 'hello (informal)',
@@ -424,8 +424,8 @@ export const englishPhraseToKhmer: Record<string, Word> = {
 		english: 'khmer language',
 	},
 	no: {
-		khmer: 'ទេ',
-		khmerlish: 'te',
+		khmer: 'អត់ទេ',
+		khmerlish: 'ot te',
 		english: 'no',
 	},
 	sorry: {
