@@ -1,11 +1,9 @@
 import DifficultyLevel from '@/components/DifficultyLevel';
 import React, { useState } from 'react';
-import BasicSentencePractice from '@/components/BasicSentencePractice';
+import BasicSentencePractice from '@/components/SpeakingPractice/BasicSentencePractice';
 import { Box } from '@mui/material';
 import { speakingPracticeDifficultyScale } from '@/data/lessonPlanConsts';
 import SponsorKhmerlishButton from '@/components/SponsorKhmerlishButton';
-import khmerlishLogo from '/logo/Khmerlish_Transparent.png';
-
 
 const SpeakingPracticePage: React.FC = () => {
     const [difficultyLevel, setDifficultyLevel] = useState<number>(0);

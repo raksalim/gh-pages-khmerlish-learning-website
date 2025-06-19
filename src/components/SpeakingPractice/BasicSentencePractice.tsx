@@ -1,11 +1,11 @@
 import { DifficultySliderOption } from '@/components/DifficultyLevel';
-import { WordPickerPlayButton } from '@/components/WordPickerPlayButton';
+import { WordPickerPlayButton } from './WordPickerPlayButton';
 import { commonSayingsList, englishToKhmerWords, infiniteVerbsWords, nounsWords, subjectWords, verbsWords } from '@/data/khmerlish/DictOfWords';
 import { arrWordsToLabels } from '@/utils/arrWordsToLabels';
 import React, { useEffect, useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Button } from '@mui/material';
-import { KhmerOrEnglishButton } from './KhmerOrEnglishButton';
+import { KhmerOrEnglishButton } from '../KhmerOrEnglishButton';
 import { handlePlay } from '@/utils/handlePlay';
 import { languageOptions, levelsSettings } from '@/data/lessonPlanConsts';
 

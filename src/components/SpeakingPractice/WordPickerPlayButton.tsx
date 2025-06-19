@@ -1,7 +1,7 @@
 import {
     WheelPicker,
     WheelPickerWrapper,
-} from "@/components/wheel-picker";
+} from "@/components/SpeakingPractice/wheel-picker";
 import { englishToKhmerWords } from "@/data/khmerlish/DictOfWords";
 import { LabelsDict } from "@/utils/arrWordsToLabels";
 import { PlayWordButton } from "./PlayWordButton";

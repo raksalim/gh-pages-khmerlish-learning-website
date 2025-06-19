@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -14,7 +14,6 @@ const HeaderContainer = styled.div`
 
 export function Header({ isToggled, setToggled }: { isToggled?: boolean; setToggled: (toggled: boolean) => void }) {
     const companyName = "ខ្មែរlish"
-
     return (
         <HeaderContainer>
             <div style={{ display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
