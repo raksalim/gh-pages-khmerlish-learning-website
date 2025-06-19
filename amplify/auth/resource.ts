@@ -13,4 +13,4 @@ export const auth = referenceAuth({
 	unauthRoleArn:
 		'arn:aws:iam::554578329341:role/service-role/khmerlish_learner_app_unauthenticated_iam_role',
 	userPoolClientId: '672s0od75o0n73kpj8duofjdtt',
-}); 
+});

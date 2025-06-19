@@ -1,4 +1,4 @@
-import { WheelPickerOption } from '@/components/wheel-picker';
+import { WheelPickerOption } from '@/components/SpeakingPractice/wheel-picker';
 import { englishToKhmerWords } from '@/data/khmerlish/DictOfWords';
 
 export type LabelsDict = {
