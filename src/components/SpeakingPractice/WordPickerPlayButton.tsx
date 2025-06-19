@@ -16,24 +16,25 @@ type WordPickerPlayButtonProps = {
     buttonLanguage: 'english' | 'khmer' | 'khmerlish';
     pickerLanguage: 'english' | 'khmer' | 'khmerlish';
     className?: string;
+    isDisplayKhmerlish?: boolean; // Optional flag to display Khmerlish
 };
 
-export function WordPickerPlayButton({ label, pickerLabelsDict, pickerValue, setPickerValue, pickerLanguage = 'english', buttonLanguage = 'khmer', className }: WordPickerPlayButtonProps) {
+export function WordPickerPlayButton({ label, pickerLabelsDict, pickerValue, setPickerValue, pickerLanguage = 'english', buttonLanguage = 'khmer', className, isDisplayKhmerlish }: WordPickerPlayButtonProps) {
 
     return (
         <div
             className={`wheel-picker-wrapper-custom ${className}`}
         >
-            {label && 
-            <div>
-                <span className="clamp-size hanuman-body">
-                    {label}
-                </span>
-            </div>}
+            {label &&
+                <div>
+                    <span className="clamp-size hanuman-body">
+                        {label}
+                    </span>
+                </div>}
             <WheelPickerWrapper>
                 <WheelPicker options={pickerLabelsDict[`${pickerLanguage}Labels`]} value={pickerValue} onValueChange={setPickerValue} />
             </WheelPickerWrapper>
-            <PlayWordButton englishWord={pickerValue} displayWord={englishToKhmerWords[pickerValue]?.[buttonLanguage] || ''} />
+            <PlayWordButton englishWord={pickerValue} displayWord={englishToKhmerWords[pickerValue]?.[buttonLanguage] || ''} isDisplayKhmerlish={isDisplayKhmerlish} />
         </div>
     );
 }

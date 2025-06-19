@@ -4,6 +4,8 @@ import BasicSentencePractice from '@/components/SpeakingPractice/BasicSentencePr
 import { Box } from '@mui/material';
 import { speakingPracticeDifficultyScale } from '@/data/lessonPlanConsts';
 import SponsorKhmerlishButton from '@/components/SponsorKhmerlishButton';
+import { Intro } from '@/components/SpeakingPractice/Intro';
+import { Tutorial } from '@/components/SpeakingPractice/Tutorial';
 
 const SpeakingPracticePage: React.FC = () => {
     const [difficultyLevel, setDifficultyLevel] = useState<number>(0);
@@ -13,21 +15,12 @@ const SpeakingPracticePage: React.FC = () => {
     return (
         <div className='container'>
             <Box style={{ minHeight: 400 }}>
-                <div
-                    style={{
-                        transition: 'opacity .3s',
-                        opacity: difficultyLevel <= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") ? 1 : 0,
-                        height: difficultyLevel <= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial") ? 'auto' : 0,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        textAlign: 'center',
-                    }}
-                >
-                    <h2 className='hanuman-title'>
-                        Speaking Practice
-                    </h2>
-                </div>
+                {difficultyLevel === speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Intro")
+                    && <Intro />
+                }
+                {difficultyLevel === speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Tutorial")
+                    && <Tutorial />
+                }
                 <BasicSentencePractice
                     difficultyLevel={difficultyLevel}
                     setDifficultyLevel={setDifficultyLevel}

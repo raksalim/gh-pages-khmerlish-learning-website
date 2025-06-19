@@ -51,7 +51,7 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
 
     return (
         <div className='container'>
-            <div style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', width: '100%', gap: '7px', padding: '0 10px' }}>
                 {difficultyLevel === speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Common Phrases")
                     && <WordPickerPlayButton
                         label="Common Phrases"
@@ -61,6 +61,7 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                         pickerLabelsDict={commonPhrase}
                         pickerLanguage={isKhmerSwitch ? pickerLanguage : 'english'}
                         buttonLanguage={buttonLanguage}
+                        isDisplayKhmerlish={true}
                     />}
                 {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Subject")
                     && <WordPickerPlayButton
