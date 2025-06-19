@@ -8,7 +8,6 @@ import { Button } from '@mui/material';
 import { KhmerOrEnglishButton } from '../KhmerOrEnglishButton';
 import { handlePlay } from '@/utils/handlePlay';
 import { languageOptions, levelsSettings } from '@/data/lessonPlanConsts';
-import { SponsorButton } from './SponsorButton';
 
 type BasicSentencePracticeProps = {
     difficultyLevel: number;

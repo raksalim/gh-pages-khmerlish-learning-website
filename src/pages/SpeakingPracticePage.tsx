@@ -29,7 +29,7 @@ const SpeakingPracticePage: React.FC = () => {
                     isAlphabetize={isAlphabetize}
                 />
             </Box>
-            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: 'auto' }}>
+            <div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: 'auto', marginBottom: 20 }}>
                 {/* Place your component here, e.g., a header or toolbar */}
                 <DifficultyLevel
                     difficultyScale={speakingPracticeDifficultyScale}
