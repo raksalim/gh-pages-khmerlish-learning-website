@@ -55,6 +55,20 @@ export const KhmerWordPractice = () => {
                     }
                 `}
             </style>
+            <div
+                style={{
+                    transition: 'opacity .3s',
+                    opacity: 0.8,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    textAlign: 'center',
+                }}
+            >
+                <h2 className='hanuman-title'>
+                    Reading Practice
+                </h2>
+            </div>
             <div className="word-container"
                 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px', fontSize: '25px', margin: 'auto' }}>
                 {`${jung === '' ? consonent : consonent + jung}  +  ${vowel ? vowel : "---"} = ${(jung === '' ? consonent : consonent + jung) + vowel}`}
