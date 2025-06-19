@@ -1,8 +1,6 @@
 import React from "react";
 import Slider from "@mui/material/Slider";
-import { Box, Button } from "@mui/material";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { Box } from "@mui/material";
 
 export type DifficultySliderOption = {
     value: number;

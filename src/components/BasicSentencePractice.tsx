@@ -4,68 +4,10 @@ import { commonSayingsList, englishToKhmerWords, infiniteVerbsWords, nounsWords,
 import { arrWordsToLabels } from '@/utils/arrWordsToLabels';
 import React, { useEffect, useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import { Box, Button } from '@mui/material';
+import { Button } from '@mui/material';
 import { KhmerOrEnglishButton } from './KhmerOrEnglishButton';
-import SponsorKhmerlishButton from './SponsorKhmerlishButton';
 import { handlePlay } from '@/utils/handlePlay';
-
-type languageOptions = 'english' | 'khmer' | 'khmerlish';
-type LevelSetting = {
-    pickerLanguage: languageOptions;
-    buttonLanguage: languageOptions;
-};
-
-const levelsSettings: Record<string, LevelSetting> = {
-    Intro: {
-        pickerLanguage: "english",
-        buttonLanguage: "khmer"
-    },
-    Tutorial: {
-        pickerLanguage: "english",
-        buttonLanguage: "khmer"
-    },
-    ['Common Phrases']: {
-        pickerLanguage: "english",
-        buttonLanguage: "khmer"
-    },
-    Subject: {
-        pickerLanguage: "english",
-        buttonLanguage: "khmerlish"
-    },
-    Verbs: {
-        pickerLanguage: "english",
-        buttonLanguage: "khmerlish"
-    },
-    Objects: {
-        pickerLanguage: "english",
-        buttonLanguage: "khmerlish"
-    },
-    Sentence: {
-        pickerLanguage: "english",
-        buttonLanguage: "khmerlish"
-    },
-    Khmerlish: {
-        pickerLanguage: "khmer",
-        buttonLanguage: "english"
-    },
-    Khmer: {
-        pickerLanguage: "khmer",
-        buttonLanguage: "khmer"
-    },
-    Practice: {
-        pickerLanguage: "khmer",
-        buttonLanguage: "khmer"
-    },
-    ['Extra Practice']: {
-        pickerLanguage: "khmer",
-        buttonLanguage: "khmer"
-    },
-};
-
-export const speakingPracticeDifficultyScale: DifficultySliderOption[] = Object.keys(levelsSettings).map((label, value) => ({
-    value,
-    label,
-}));
+import { languageOptions, levelsSettings } from '@/data/lessonPlanConsts';
 
 type BasicSentencePracticeProps = {
     difficultyLevel: number;
@@ -105,7 +47,7 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
         }
         setPickerLanguage(levelsSettings[speakingPracticeDifficultyScale[difficultyLevel].label].pickerLanguage);
         setButtonLanguage(levelsSettings[speakingPracticeDifficultyScale[difficultyLevel].label].buttonLanguage);
-    }, [difficultyLevel]);
+    }, [difficultyLevel, speakingPracticeDifficultyScale]);
 
     return (
         <div className='container'>

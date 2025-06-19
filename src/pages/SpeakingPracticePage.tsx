@@ -1,12 +1,13 @@
 import DifficultyLevel from '@/components/DifficultyLevel';
 import React, { useState } from 'react';
-import BasicSentencePractice, { speakingPracticeDifficultyScale } from '@/components/BasicSentencePractice';
+import BasicSentencePractice from '@/components/BasicSentencePractice';
 import { Box } from '@mui/material';
+import { speakingPracticeDifficultyScale } from '@/data/lessonPlanConsts';
 
 const SpeakingPracticePage: React.FC = () => {
     const [difficultyLevel, setDifficultyLevel] = useState<number>(0);
 
-    const [isAlphabetize, setIsAlphabetize] = useState<boolean>(false);
+    const isAlphabetize = false;
 
     return (
         <div className='container'>
