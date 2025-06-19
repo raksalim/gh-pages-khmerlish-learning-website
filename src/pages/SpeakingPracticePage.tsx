@@ -38,7 +38,6 @@ const SpeakingPracticePage: React.FC = () => {
                 />
             </div>
             {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Khmerlish") && <SponsorButton />}
-            <SponsorKhmerlishButton isShowing={difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Khmerlish")} />
         </div>
     );
 };
