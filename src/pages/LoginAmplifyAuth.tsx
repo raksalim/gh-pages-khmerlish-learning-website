@@ -2,8 +2,9 @@ import { Amplify } from 'aws-amplify';
 import { Authenticator } from "@aws-amplify/ui-react";
 import '@aws-amplify/ui-react/styles.css';
 import outputs from '../../amplify_outputs.json';
-import { Button } from '@mui/material';
+import { Button, Checkbox } from '@mui/material';
 import { AuthUser } from 'aws-amplify/auth';
+import { useState } from 'react';
 
 
 Amplify.configure(outputs);
@@ -15,16 +16,22 @@ type LoginAmplifyAuthProps = {
 };
 
 export default function LoginAmplifyAuth({ isNested = false, userEmail, setUserEmail }: LoginAmplifyAuthProps) {
+
+    const [isNotMinorCheckboxChecked, setIsNotMinorCheckboxChecked] = useState(false);
     // Update userEmail when user changes
     return (
-        <div dir="ltr" style={!isNested ? { width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh' } : {}}>
-            <Authenticator socialProviders={['google']}>
-                {({ signOut, user }) => {
-                    // useEffect cannot be used inside a function, so we need to lift user state up
-                    // We'll use a wrapper component to handle this
-                    return <LoginContent user={user} signOut={signOut} userEmail={userEmail} setUserEmail={setUserEmail} />;
-                }}
-            </Authenticator>
+        <div dir="ltr" style={!isNested ? { width: '100%', display: 'flex', flexDirection: 'column', minHeight: '80vh', alignItems: 'center' } : {}}>
+            {!userEmail && <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Checkbox value={isNotMinorCheckboxChecked} onChange={() => setIsNotMinorCheckboxChecked(!isNotMinorCheckboxChecked)} />
+                <label htmlFor="disabled-checkbox" style={{ margin: 0 }}>I am over 13 years old.</label>
+            </div>}
+            <div style={{ opacity: isNotMinorCheckboxChecked || userEmail ? 1 : 0.5, pointerEvents: isNotMinorCheckboxChecked || userEmail ? 'auto' : 'none' }}>
+                <Authenticator socialProviders={['google']}>
+                    {({ signOut, user }) => {
+                        return <LoginContent user={user} signOut={signOut} userEmail={userEmail} setUserEmail={setUserEmail} />;
+                    }}
+                </Authenticator>
+            </div>
         </div>
     );
 }

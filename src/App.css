@@ -1,12 +1,9 @@
 .appContainer {
 	padding: 10px;
 	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
 }
 
 .container {
-	min-height: 60vh;
 	display: flex;
 	flex-direction: column;
 }
@@ -18,4 +15,35 @@
 	text-overflow: ellipsis;
 	font-size: clamp(12px, 2vw, 16px);
 	width: 100%;
+}
+
+.hanuman-title {
+	font-family: 'Hanuman', serif;
+	font-optical-sizing: auto;
+	font-weight: 300;
+	font-style: normal;
+	font-size: 24px;
+}
+
+.hanuman-body {
+	font-family: 'Hanuman', serif;
+	font-optical-sizing: auto;
+	font-weight: 200;
+	font-style: normal;
+	font-size: 20px;
+}
+.hanuman-paragraph {
+	font-family: 'Hanuman', serif;
+	font-optical-sizing: auto;
+	font-weight: 200;
+	font-style: normal;
+	font-size: 16px;
+}
+@media (max-width: 600px) {
+	.hanuman-title {
+		font-size: 16px;
+	}
+	.hanuman-body {
+		font-size: 12px;
+	}
 }
