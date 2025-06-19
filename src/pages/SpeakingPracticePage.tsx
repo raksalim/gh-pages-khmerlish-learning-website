@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import BasicSentencePractice from '@/components/SpeakingPractice/BasicSentencePractice';
 import { Box } from '@mui/material';
 import { speakingPracticeDifficultyScale } from '@/data/lessonPlanConsts';
-import SponsorKhmerlishButton from '@/components/SpeakingPractice/SponsorKhmerlishButton';
 import { Intro } from '@/components/SpeakingPractice/Intro';
 import { Tutorial } from '@/components/SpeakingPractice/Tutorial';
 import { SponsorButton } from '@/components/SpeakingPractice/SponsorButton';
