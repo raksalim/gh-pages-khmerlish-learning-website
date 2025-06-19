@@ -86,7 +86,7 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                 }
                 {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Verbs")
                     && <WordPickerPlayButton
-                        label={difficultyLevel > 4 ? "Infinite Verb" : 'Verb'}
+                        label={difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Extra Practice") ? "Infinite Verb" : 'Verb'}
                         difficultyLevel={difficultyLevel}
                         pickerValue={infiniteVerbValue}
                         setPickerValue={setInfiniteVerbValue}
@@ -146,7 +146,7 @@ const BasicSentencePractice: React.FC<BasicSentencePracticeProps> = ({
                 marginTop: '10px',
                 width: '100%',
             }}>
-                {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Practice")
+                {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Khmer")
                     && <KhmerOrEnglishButton
                         checked={isKhmerSwitch}
                         onChange={() => { setIsKhmerSwitch(!isKhmerSwitch); console.log(isKhmerSwitch) }}

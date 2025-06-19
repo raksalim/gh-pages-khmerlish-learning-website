@@ -37,7 +37,7 @@ const SpeakingPracticePage: React.FC = () => {
                     scaleValue={difficultyLevel}
                 />
             </div>
-            {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Extra Practice") && <SponsorButton />}
+            {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Khmerlish") && <SponsorButton />}
             <SponsorKhmerlishButton isShowing={difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Khmerlish")} />
         </div>
     );

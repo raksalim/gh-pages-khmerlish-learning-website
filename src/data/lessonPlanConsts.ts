@@ -31,19 +31,11 @@ export const levelsSettings: Record<string, LevelSetting> = {
 		pickerLanguage: 'english',
 		buttonLanguage: 'khmerlish',
 	},
-	Sentence: {
-		pickerLanguage: 'english',
-		buttonLanguage: 'khmerlish',
-	},
 	Khmerlish: {
 		pickerLanguage: 'khmer',
 		buttonLanguage: 'english',
 	},
 	Khmer: {
-		pickerLanguage: 'khmer',
-		buttonLanguage: 'khmer',
-	},
-	Practice: {
 		pickerLanguage: 'khmer',
 		buttonLanguage: 'khmer',
 	},
