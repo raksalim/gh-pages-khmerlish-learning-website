@@ -8,12 +8,12 @@ import { KhmerWordPractice } from './pages/KhmerWordPractice'
 import LoginAmplifyAuth from './pages/LoginAmplifyAuth'
 import SpeakingPracticePage from './pages/SpeakingPracticePage'
 import { PageNotFound } from './pages/PageNotFound'
+import Sponsor from './pages/Sponsor'
 
 function App() {
   const [userEmail, setUserEmail] = useState<string | boolean>('')
 
   getUserEmail().then((email) => {
-    console.log("email", email)
     setUserEmail(email)
   }).catch((e) => {
     console.warn("fetchAuthSession error", e)
@@ -21,11 +21,12 @@ function App() {
   return (<div className='appContainer'>
     <BrowserRouter>
       <SideNav userEmail={userEmail} setUserEmail={setUserEmail} />
-      <div style={{ display: 'flex' }}>
+      <div>
         <Routes>
-          <Route path="/" element={<KhmerWordPractice />} />
+          <Route path="/" element={<SpeakingPracticePage />} />
           <Route path="/login" element={<LoginAmplifyAuth userEmail={userEmail} setUserEmail={setUserEmail} />} />
-          <Route path="/speakingPractice" element={<SpeakingPracticePage />} />
+          <Route path="/readingPractice" element={<KhmerWordPractice />} />
+          <Route path="/sponsor" element={<Sponsor />} />
           <Route path="/*" element={<PageNotFound />} />
         </Routes>
       </div>

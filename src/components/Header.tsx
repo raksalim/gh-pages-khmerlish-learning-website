@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import khmerlishLogo from '/logo/Khmerlish_Transparent.png';
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+import { Button, Typography } from '@mui/material';
 
 const HeaderContainer = styled.div`
     display: flex;
@@ -16,18 +17,18 @@ export function Header({ isToggled, setToggled }: { isToggled?: boolean; setTogg
 
     return (
         <HeaderContainer>
-            <span
-                style={{ cursor: 'pointer' }}
-                onClick={() => window.location.href = '/'}
-                className='hanuman-title'
-            > {companyName}
-            </span>
-            <img
-                src={khmerlishLogo}
-                alt="Khmerlish Logo"
-                style={{ width: '50px', height: '50px', margin: '10px' }}
-                onClick={() => setToggled(!isToggled)}
-            />
+            <div style={{ display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
+                <img src="/logo/Khmerlish_Transparent.png" alt="Khmerlish Logo" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
+                <span
+                    style={{ cursor: 'pointer', marginTop: '7px', marginLeft: '-7px' }}
+                    className='hanuman-title'
+
+                > {companyName}
+                </span>
+            </div>
+            <Button onClick={() => setToggled(!isToggled)}>
+                <DensityMediumIcon style={{ color: 'rgba( 238, 162, 51, 100%)' }} />
+            </Button>
         </HeaderContainer>
     )
 }

@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import BasicSentencePractice from '@/components/BasicSentencePractice';
 import { Box } from '@mui/material';
 import { speakingPracticeDifficultyScale } from '@/data/lessonPlanConsts';
+import SponsorKhmerlishButton from '@/components/SponsorKhmerlishButton';
+import khmerlishLogo from '/logo/Khmerlish_Transparent.png';
+
 
 const SpeakingPracticePage: React.FC = () => {
     const [difficultyLevel, setDifficultyLevel] = useState<number>(0);
@@ -42,19 +45,8 @@ const SpeakingPracticePage: React.FC = () => {
                     scaleValue={difficultyLevel}
                 />
             </div>
-            <div
-                id="paypal-container-LUK4VKR8CTMYU"
-                style={{
-                    opacity: difficultyLevel >= 7 ? 1 : 0,
-                    height: difficultyLevel >= 7 ? 'auto' : 0,
-                    overflow: 'hidden',
-                    transition: 'opacity 0.8s, width 0.5s',
-                    width: '100%',
-                    marginTop: '10vh',
-                }}
-            />
+            <SponsorKhmerlishButton isShowing={difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Khmerlish")} />
         </div>
-
     );
 };
 

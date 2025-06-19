@@ -3,6 +3,12 @@ import { Sidebar, Menu, MenuItem, menuClasses, sidebarClasses } from 'react-pro-
 import { Header } from './Header';
 import { Link } from 'react-router-dom';
 import LoginAmplifyAuth from '@/pages/LoginAmplifyAuth';
+import { Typography } from '@mui/material';
+import UserCircleProfileAvatar from './userCirclePrifileAvatar';
+import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 type SideNavProps = {
     userEmail: string | boolean;
@@ -48,20 +54,30 @@ export default function SideNav({ userEmail, setUserEmail }: SideNavProps) {
                 rtl
             >
                 <Menu>
-                    <MenuItem disabled style={{ color: '#939292' }}>{userEmail}</MenuItem>
-                    <MenuItem component={<Link to="/" />} onClick={() => { setToggled(!toggled) }}>Home</MenuItem>
-                    <MenuItem component={<Link to="/speakingPractice" />} onClick={() => { setToggled(!toggled) }}>Speaking</MenuItem>
-                    <MenuItem component={<Link to="/" />} onClick={() => { setToggled(!toggled) }}>Reading</MenuItem>
+                    <MenuItem disabled style={{ color: '#939292' }}>
+                        <div className='userEmail' style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            {typeof userEmail === 'string' && userEmail && (
+                                <UserCircleProfileAvatar userEmail={userEmail} />
+                            )}
+                            <Typography className='hanuman-title' style={{ fontSize: '.8rem' }}>
+                                {userEmail}
+                            </Typography>
+                        </div>
+                    </MenuItem>
+                    <MenuItem icon={<RecordVoiceOverIcon />} component={<Link to="/" />} onClick={() => { setToggled(!toggled) }}>Speaking</MenuItem>
+                    <MenuItem icon={<AutoStoriesIcon />} component={<Link to="/readingPractice" />} onClick={() => { setToggled(!toggled) }}>Reading</MenuItem>
+                    <MenuItem icon={<VolunteerActivismIcon />} component={<Link to="/sponsor" />} onClick={() => { setToggled(!toggled) }}>Sponsor</MenuItem>
+                    {/* <MenuItem component={<Link to="/" />} onClick={() => { setToggled(!toggled) }}>Reading</MenuItem> */}
                     {/* <MenuItem component={<Link to="/documentation" />} onClick={() => { setToggled(!toggled) }}>Entertainment</MenuItem> */}
                     {userEmail
                         ?
                         <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
-                            <MenuItem component={<Link to="/login" />} onClick={() => { setToggled(!toggled) }}>
+                            <MenuItem icon={<ExitToAppIcon />} component={<Link to="/login" />} onClick={() => { setToggled(!toggled) }}>
                                 Sign Out
                             </MenuItem>
                         </div>
                         :
-                            <LoginAmplifyAuth isNested userEmail={userEmail} setUserEmail={setUserEmail} />
+                        <LoginAmplifyAuth isNested userEmail={userEmail} setUserEmail={setUserEmail} />
                     }
                 </Menu>
             </Sidebar >
