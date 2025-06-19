@@ -1,6 +1,9 @@
 import React from "react";
 import PickerButtonScreenshot from '/logo/PickerButtonScreenshot.png';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import VolumeMuteRoundedIcon from '@mui/icons-material/VolumeMuteRounded';
+import VolumeDownRoundedIcon from '@mui/icons-material/VolumeDownRounded';
+import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 
 export const Tutorial: React.FC = () => {
     const isMobile = window.matchMedia('(max-width: 800px)').matches;
@@ -24,6 +27,11 @@ export const Tutorial: React.FC = () => {
                     <p className="hanuman-paragraph">Click around!</p>
                     <p className="hanuman-paragraph">(you got this!)</p>
                 </div>
+            </div>
+            <div style={{ textAlign: "center", fontSize: "14px" }}>
+                <VolumeMuteRoundedIcon />
+                <VolumeDownRoundedIcon />
+                <VolumeUpRoundedIcon />
             </div>
             <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
                 <KeyboardArrowDownIcon />

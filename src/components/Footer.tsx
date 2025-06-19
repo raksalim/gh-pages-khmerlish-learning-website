@@ -6,7 +6,7 @@ import khmerlishLogoTransparent from '/logo/Khmerlish logo transparent.png';
 const FooterContainer = styled.div`
   font-size: 12px;
   text-align: center;
-  margin-top: auto;
+  margin-top: 20px;
 `;
 
 const Flex = styled.div`
