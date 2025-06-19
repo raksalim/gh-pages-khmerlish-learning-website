@@ -3,9 +3,10 @@ import React, { useState } from 'react';
 import BasicSentencePractice from '@/components/SpeakingPractice/BasicSentencePractice';
 import { Box } from '@mui/material';
 import { speakingPracticeDifficultyScale } from '@/data/lessonPlanConsts';
-import SponsorKhmerlishButton from '@/components/SponsorKhmerlishButton';
+import SponsorKhmerlishButton from '@/components/SpeakingPractice/SponsorKhmerlishButton';
 import { Intro } from '@/components/SpeakingPractice/Intro';
 import { Tutorial } from '@/components/SpeakingPractice/Tutorial';
+import { SponsorButton } from '@/components/SpeakingPractice/SponsorButton';
 
 const SpeakingPracticePage: React.FC = () => {
     const [difficultyLevel, setDifficultyLevel] = useState<number>(0);
@@ -36,6 +37,7 @@ const SpeakingPracticePage: React.FC = () => {
                     scaleValue={difficultyLevel}
                 />
             </div>
+            {difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Extra Practice") && <SponsorButton />}
             <SponsorKhmerlishButton isShowing={difficultyLevel >= speakingPracticeDifficultyScale.findIndex(opt => opt.label === "Khmerlish")} />
         </div>
     );
