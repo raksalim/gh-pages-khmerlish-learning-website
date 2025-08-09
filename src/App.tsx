@@ -28,6 +28,7 @@ function App() {
           <Route path="/readingPractice" element={<KhmerWordPractice />} />
           <Route path="/sponsor" element={<Sponsor />} />
           <Route path="/*" element={<PageNotFound />} />
+
         </Routes>
       </div>
     </BrowserRouter>

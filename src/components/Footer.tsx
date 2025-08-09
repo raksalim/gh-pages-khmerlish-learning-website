@@ -22,9 +22,6 @@ function Footer() {
 
     return (
         <FooterContainer>
-            <p style={{ fontSize: '14px', marginBottom: '10px' }}>
-                {year} © Copyright {companyName}
-            </p>
             <Flex>
                 <a href="https://www.tiktok.com/@khmerlish" target="_blank" rel="noopener noreferrer">
                     <img
@@ -48,7 +45,10 @@ function Footer() {
                     />
                 </a>
             </Flex>
-        </FooterContainer>
+            <p style={{ fontSize: '14px', marginBottom: '10px' }}>
+                {year} © Copyright {companyName} and in using this website you agree to our <a href="https://www.khmerlish.com/terms-and-conditions" target="_blank" rel="noopener noreferrer">Terms and Conditions</a>.
+            </p>
+        </FooterContainer >
     )
 }
 
