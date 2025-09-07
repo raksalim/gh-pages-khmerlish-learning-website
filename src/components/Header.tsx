@@ -13,7 +13,7 @@ const HeaderContainer = styled.div`
 `;
 
 export function Header({ isToggled, setToggled }: { isToggled?: boolean; setToggled: (toggled: boolean) => void }) {
-    const companyName = "ខ្មែរlish"
+    const companyName = "khmerlish"
     return (
         <HeaderContainer>
             <div style={{ display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
