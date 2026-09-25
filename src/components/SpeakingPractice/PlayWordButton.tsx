@@ -1,16 +1,21 @@
 import { englishToKhmerWords } from '@/data/khmerlish/DictOfWords';
-import { handlePlay } from '@/utils/handlePlay';
+import { handlePlay, prepareWords } from '@/utils/handlePlay';
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 
 type PlayWordButtonProps = {
-    englishWord: string; // S3 URL to the audio file
+    englishWord: string; // Dictionary key used to construct the audio URL
     displayWord?: string; // Optional display word, if different from englishWord
     isDisplayKhmerlish?: boolean; // Optional flag to display Khmerlish
 }
 
 export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, displayWord, isDisplayKhmerlish }) => {
+    useEffect(() => {
+        // Let wheel scrolling settle before requesting the selected clip.
+        const timer = window.setTimeout(() => prepareWords([englishWord]), 250);
+        return () => window.clearTimeout(timer);
+    }, [englishWord]);
 
     return (
         <Button onClick={() => { handlePlay([englishWord]) }}
@@ -26,4 +31,3 @@ export const PlayWordButton: React.FC<PlayWordButtonProps> = ({ englishWord, dis
         </Button>
     );
 };
-

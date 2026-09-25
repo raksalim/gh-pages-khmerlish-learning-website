@@ -32,7 +32,7 @@ export function WordPickerPlayButton({ label, pickerLabelsDict, pickerValue, set
                     </span>
                 </div>}
             <WheelPickerWrapper>
-                <WheelPicker options={pickerLabelsDict[`${pickerLanguage}Labels`]} value={pickerValue} onValueChange={setPickerValue} />
+                <WheelPicker options={pickerLabelsDict[`${pickerLanguage}Labels`]} value={pickerValue} onValueChange={value => setPickerValue(String(value))} />
             </WheelPickerWrapper>
             <PlayWordButton englishWord={pickerValue} displayWord={englishToKhmerWords[pickerValue]?.[buttonLanguage] || ''} isDisplayKhmerlish={isDisplayKhmerlish} />
         </div>

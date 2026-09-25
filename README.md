@@ -13,6 +13,14 @@ npm run dev
 
 Run `npm run build` to type-check and generate `dist`, then `npm run preview` to preview it.
 
+## Audio playback
+
+The reading keyboard prepares up to 20 visible letter sounds, prioritizing keys near the middle of the viewport and starting two requests every 150 ms. Scrolling replaces pending preparation, and changing consonant series updates the vowel URLs. Touch-down and keyboard focus also prepare the targeted key. Preparation stops on leaving the page; already cached clips remain available within the shared cache limit.
+
+Selected speaking-practice words prepare after the picker settles for 250 ms. A shared cache retains up to 24 audio elements for words and letters; sentence playback prepares two upcoming clips while the current clip plays. A new tap stops the previous playback. Empty word selections are skipped, and background preparation is disabled when the browser reports Data Saver. Audio URLs and file formats still use the existing S3 files.
+
+Run `npm run test:audio` for playback, caching, cancellation, and error-handling checks. These use simulated audio elements; they do not measure network latency or validate mobile playback policies. Before deployment, check iOS Safari and Android Chrome with an empty browser cache and a throttled connection: selected-word playback, repeat taps, rapid changes between buttons, and a complete sentence. Compare tap-to-sound delay on first and repeated plays. Browsers may ignore preload hints, so first-play improvements depend on the device and connection.
+
 ## Deploy the backup site
 
 1. Create a separate GitHub repository (for example `khmerlish-learn-pages`) and push this version to its `main` branch. Keep the existing Amplify repository separate during migration.
