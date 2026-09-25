@@ -9,7 +9,7 @@ import Sponsor from './pages/Sponsor'
 
 function App() {
   return (<div className='appContainer'>
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <SideNav />
       <div>
         <Routes>

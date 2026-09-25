@@ -22,7 +22,7 @@ Run `npm run build` to type-check and generate `dist`, then `npm run preview` to
 5. Run the Deploy to GitHub Pages workflow, wait for DNS and certificate provisioning, and enable Enforce HTTPS.
 6. Check speaking practice, audio playback, reading practice, sponsor links, mobile navigation, and direct loads/refreshes of `/readingPractice` and `/sponsor`. Old `/login` links redirect to the home page.
 
-The Vite base remains `/` because this deployment uses a custom domain. A default `github.io/repository/` URL is not supported by this configuration. With an Actions deployment, configure the custom domain in Pages settings; no CNAME file is needed.
+The workflow reads the Pages base path and builds for either the default `github.io/repository/` URL or a custom domain. After changing the custom domain, rerun the workflow to rebuild asset and router paths. Local builds default to `/`; set `PAGES_BASE_PATH=/repository/` to test a project URL. With an Actions deployment, configure the custom domain in Pages settings; no CNAME file is needed.
 
 `scripts/static-routes.mjs` generates directory index files for the known routes, preserving clean URLs without server rewrites. Add new routes to that script when adding pages. `404.html` renders the application's not-found page for unknown paths (with HTTP 404).
 

@@ -19,19 +19,12 @@
     <script
       src="https://www.paypal.com/sdk/js?client-id=BAA0vZdz_EnOmN3s6AhbbKr_gvm_ohucCTI1eTtJ6oo7ogwLLNGNwSKxmfrOuCtU7YlhZCEh77FzaHs1ls&components=hosted-buttons&enable-funding=venmo&currency=USD" 
       crossorigin="anonymous" 
-      async>
+      id="paypal-sdk"
+      defer>
     </script>
     <title>ខ្មែរlish App - Khmerlish</title>
   </head>
   <body>
-    <script>
-      document.addEventListener("DOMContentLoaded", (event) => {
-        paypal.HostedButtons({
-          hostedButtonId: "TV2K9L7JSS5FA"
-        })
-        .render("#paypal-container-TV2K9L7JSS5FA")
-      })
-    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

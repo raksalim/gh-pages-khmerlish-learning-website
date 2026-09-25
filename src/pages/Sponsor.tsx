@@ -1,3 +1,4 @@
+import PayPalButton from '../components/PayPalButton';
 import React from 'react';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import { Button } from '@mui/material';
@@ -8,7 +9,7 @@ const Sponsor: React.FC = () => {
             <h2 className='hanuman-title' style={{ textAlign: 'center' }}>Sponsor Khmerlish <VolunteerActivismIcon /></h2>
             <h3 className='hanuman-body' style={{ textAlign: 'center' }}>Thank you for your consideration!</h3>
             <div style={{ minWidth: '80vw', margin: 'auto' }}>
-                <div id="paypal-container-TV2K9L7JSS5FA"></div>
+                <PayPalButton />
             </div>
             <h4 className='hanuman-body' style={{ textAlign: 'center' }}>(Refresh or use{' '}
                 <Button

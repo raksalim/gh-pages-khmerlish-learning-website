@@ -18,7 +18,7 @@ export function Header({ isToggled, setToggled }: { isToggled?: boolean; setTogg
     return (
         <HeaderContainer>
             <Link to="/" style={{ display: 'flex', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
-                <img src="/logo/Khmerlish_Transparent.png" alt="Khmerlish Logo" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
+                <img src={`${import.meta.env.BASE_URL}logo/Khmerlish_Transparent.png`} alt="Khmerlish Logo" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
                 <span
                     style={{ cursor: 'pointer', marginTop: '7px', marginLeft: '-7px' }}
                     className='hanuman-title'

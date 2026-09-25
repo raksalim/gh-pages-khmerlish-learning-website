@@ -1,3 +1,4 @@
+import PayPalButton from '../PayPalButton';
 import React from 'react';
 
 type SponsorKhmerlishButtonProps = {
@@ -14,7 +15,7 @@ const SponsorKhmerlishButton: React.FC<SponsorKhmerlishButtonProps> = ({ isShowi
                 transition: 'opacity 0.8s, width 0.5s',
                 width: '100%',
             }}>
-                <div id="paypal-container-TV2K9L7JSS5FA"><br /></div>
+                <PayPalButton />
             </div>
         </>
     )

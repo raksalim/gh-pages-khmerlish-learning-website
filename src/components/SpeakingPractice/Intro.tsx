@@ -9,7 +9,7 @@ export const Intro: React.FC = () => {
             <h3 className="hanuman-title">Speaking Practice</h3>
             <div style={{ width: '100%', display: 'flex', justifyContent: 'center', height: 'auto', marginTop: 'auto' }}>
                 <img
-                    src="/logo/Khmerlish_Transparent.png"
+                    src={`${import.meta.env.BASE_URL}logo/Khmerlish_Transparent.png`}
                     alt="Khmerlish Logo"
                     style={{ width: isMobile ? '50%' : '15%' }}
                 />
