@@ -135,3 +135,43 @@ test('audio preparation and playback', async t => {
         await tick();
     });
 });
+
+test('visible keyboard preparation is bounded and cancels when scrolling or leaving', async t => {
+    const { prepareVisibleAudio } = await import('../src/utils/prepareVisibleAudio.ts');
+    t.mock.timers.enable({ apis: ['setTimeout'] });
+    let notify;
+    let disconnected = false;
+    globalThis.window = { innerHeight: 800 };
+    globalThis.IntersectionObserver = class {
+        constructor(callback) { notify = callback; }
+        observe() {}
+        disconnect() { disconnected = true; }
+    };
+    const buttons = Array.from({ length: 30 }, (_, index) => ({
+        dataset: { audioUrl: `visible-${index}` },
+        matches: () => index === 0,
+        getBoundingClientRect: () => ({ top: 100 + index, bottom: 140 + index }),
+    }));
+    const stop = prepareVisibleAudio({ querySelectorAll: () => buttons });
+    notify(buttons.map(target => ({ target, isIntersecting: true })));
+    assert.equal(clip('visible-29'), undefined);
+    t.mock.timers.tick(150);
+    assert.ok(clip('visible-29'));
+    assert.ok(clip('visible-28'));
+    assert.equal(clip('visible-27'), undefined);
+    for (let i = 0; i < 9; i++) t.mock.timers.tick(150);
+    assert.equal(FakeAudio.instances.filter(audio => audio.src.startsWith('visible-')).length, 20);
+    assert.equal(clip('visible-0'), undefined);
+
+    const scrolled = { ...buttons[1], dataset: { audioUrl: 'scrolled-key' } };
+    notify([...buttons.map(target => ({ target, isIntersecting: false })), { target: scrolled, isIntersecting: true }]);
+    notify([{ target: scrolled, isIntersecting: false }]);
+    t.mock.timers.tick(150);
+    assert.equal(clip('scrolled-key'), undefined);
+
+    notify([{ target: scrolled, isIntersecting: true }]);
+    stop();
+    t.mock.timers.tick(1000);
+    assert.equal(clip('scrolled-key'), undefined);
+    assert.equal(disconnected, true);
+});

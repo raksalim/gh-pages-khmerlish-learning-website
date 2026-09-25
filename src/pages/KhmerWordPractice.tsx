@@ -3,11 +3,17 @@ import VolumeMuteRoundedIcon from '@mui/icons-material/VolumeMuteRounded';
 import VolumeDownRoundedIcon from '@mui/icons-material/VolumeDownRounded';
 import VolumeUpRoundedIcon from '@mui/icons-material/VolumeUpRounded';
 import { Button } from "@mui/material"
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { khmerVowels, khmerVowelsThatDontChange } from "../data/khmer/khmerVowels";
 import { khmerConsonantsForRatTeeth } from "../data/khmer/khmerConsonant";
 import { s3BucketBaseUrl } from "@/data/const";
-import { playAudioSequence } from "@/utils/audioPlayback";
+import { playAudioSequence, prepareAudio } from "@/utils/audioPlayback";
+import { prepareVisibleAudio } from "@/utils/prepareVisibleAudio";
+
+const s3LetterSoundBaseUrl = `${s3BucketBaseUrl}/sound/khmer`;
+const formatIdx = (idx: number) => String(idx).padStart(2, "0");
+const consonantSoundUrls = khmerConsonantsAll.map((_, idx) =>
+    `${s3LetterSoundBaseUrl}/consonants/c-${formatIdx(idx + 1)}.wav`);
 
 export const KhmerWordPractice = () => {
     // const [isColorEnabled, setIsColorEnabled] = useState(true);
@@ -18,7 +24,28 @@ export const KhmerWordPractice = () => {
     const [isAh, setIsAh] = useState<boolean>(true)
     const [fullWord, setFullWord] = useState<string>('')
 
-    const s3LetterSoundBaseUrl = `${s3BucketBaseUrl}/sound/khmer`
+    const keyboardRef = useRef<HTMLDivElement>(null);
+    const consonantIndex = khmerConsonantsAll.indexOf(consonent);
+    const teethSoundUrl = khmerConsonantsForRatTeeth.includes(consonent)
+        ? `${s3LetterSoundBaseUrl}/consonants/teeth/teeth-${formatIdx(khmerConsonantsWithRatTeethIndexMapping[consonantIndex])}.wav`
+        : undefined;
+    const hairSoundUrl = khmerConsonantsForHair.includes(consonent)
+        ? `${s3LetterSoundBaseUrl}/consonants/hair/hair-${formatIdx(khmerConsonantsWithHairIndexMapping[consonantIndex])}.wav`
+        : undefined;
+    const vowelSoundUrls = khmerVowels.map((letter, idx) =>
+        (isAh || khmerVowelsThatDontChange.includes(letter))
+            ? `${s3LetterSoundBaseUrl}/vowels-set-1/v1-${formatIdx(idx + 1)}.wav`
+            : `${s3LetterSoundBaseUrl}/vowels-set-2/v2-${formatIdx(idx + 1)}.wav`);
+
+    useEffect(() => {
+        if (keyboardRef.current) return prepareVisibleAudio(keyboardRef.current);
+    }, [isAh, consonent, isConsonent]);
+
+    const prepareTarget = (target: EventTarget) => {
+        if (!(target instanceof Element)) return;
+        const button = target.closest<HTMLButtonElement>('button[data-audio-url]');
+        if (button?.dataset.audioUrl && !button.disabled) prepareAudio([button.dataset.audioUrl]);
+    };
 
     const setVowelColor = () =>
         isAh ? "primary" : "error"
@@ -29,7 +56,6 @@ export const KhmerWordPractice = () => {
         }
         return "្" + letter
     }
-    const formatIdx = (idx: number) => idx <= 9 ? `0${idx}` : `${idx}`;
 
     return (
         <div style={{ maxWidth: '1130px', margin: 'auto' }}>
@@ -90,7 +116,10 @@ export const KhmerWordPractice = () => {
                     <BackspaceIcon />
                 </Button>
             </div> */}
-            <div className="flex-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
+            <div ref={keyboardRef}
+                onPointerDownCapture={event => prepareTarget(event.target)}
+                onFocusCapture={event => prepareTarget(event.target)}
+                className="flex-container" style={{ display: "flex", justifyContent: "center", alignItems: "center", flexWrap: "wrap" }}>
 
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "7px", maxWidth: "500px", marginBottom: "auto" }}>
                     {
@@ -99,6 +128,7 @@ export const KhmerWordPractice = () => {
                                 <Button
                                     variant="outlined"
                                     color={khmerConsonantsAh.includes(khmerConsonant) ? "primary" : "error"}
+                                    data-audio-url={consonantSoundUrls[idx]}
                                     fullWidth
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
@@ -113,7 +143,7 @@ export const KhmerWordPractice = () => {
                                             setFullWord(fullWord + "្" + khmerConsonant);
                                             setIsConsonent(true);
                                         };
-                                        void playAudioSequence([`${s3LetterSoundBaseUrl}/consonants/c-${formatIdx(idx + 1)}.wav`]);
+                                        void playAudioSequence([consonantSoundUrls[idx]]);
                                     }}
                                 >
                                     {setDisplayLetter(khmerConsonant)}
@@ -129,11 +159,11 @@ export const KhmerWordPractice = () => {
                         onClick={() => {
                             setConsonent(consonent + '៉')
                             setFullWord(fullWord + '៉');
-                            const soundPath = `${s3LetterSoundBaseUrl}/consonants/teeth/teeth-${formatIdx(khmerConsonantsWithRatTeethIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
-                            void playAudioSequence([soundPath]);
+                            if (teethSoundUrl) void playAudioSequence([teethSoundUrl]);
                             setIsAh(!isAh)
                         }}
-                        disabled={!khmerConsonantsForRatTeeth.includes(consonent)}
+                        data-audio-url={teethSoundUrl}
+                        disabled={!teethSoundUrl}
                     >
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
                             <span>៉</span>
@@ -147,11 +177,11 @@ export const KhmerWordPractice = () => {
                         onClick={() => {
                             setConsonent(consonent + '៊')
                             setFullWord(fullWord + '៊');
-                            const soundPath = `${s3LetterSoundBaseUrl}/consonants/hair/hair-${formatIdx(khmerConsonantsWithHairIndexMapping[khmerConsonantsAll.indexOf(consonent)])}.wav`
-                            void playAudioSequence([soundPath]);
+                            if (hairSoundUrl) void playAudioSequence([hairSoundUrl]);
                             setIsAh(!isAh)
                         }}
-                        disabled={!khmerConsonantsForHair.includes(consonent)}
+                        data-audio-url={hairSoundUrl}
+                        disabled={!hairSoundUrl}
                     >
                         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", fontSize: "20px" }}>
                             <span>៊</span>
@@ -162,6 +192,7 @@ export const KhmerWordPractice = () => {
                         variant='outlined'
                         color='primary'
                         fullWidth
+                        data-audio-url={isConsonent ? `${s3LetterSoundBaseUrl}/jung.wav` : undefined}
                         style={{ fontSize: "10px", marginLeft: 'auto', gridColumn: 'span 5' }}
                         onClick={() => {
                             setIsConsonent(!isConsonent)
@@ -182,12 +213,11 @@ export const KhmerWordPractice = () => {
                                 <Button
                                     variant='outlined'
                                     color={khmerVowelsThatDontChange.includes(vowel) ? 'success' : setVowelColor()}
+                                    data-audio-url={vowelSoundUrls[idx]}
                                     fullWidth
                                     style={{ fontSize: "20px" }}
                                     onClick={() => {
-                                        const soundPath = (isAh || khmerVowelsThatDontChange.includes(vowel))
-                                            ? `${s3LetterSoundBaseUrl}/vowels-set-1/v1-${formatIdx(idx + 1)}.wav`
-                                            : `${s3LetterSoundBaseUrl}/vowels-set-2/v2-${formatIdx(idx + 1)}.wav`
+                                        const soundPath = vowelSoundUrls[idx];
                                         setVowel(vowel);
                                         void playAudioSequence([soundPath]);
                                         setFullWord(fullWord + vowel);
