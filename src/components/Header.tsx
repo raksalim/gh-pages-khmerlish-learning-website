@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import { Button } from '@mui/material';
@@ -16,7 +17,7 @@ export function Header({ isToggled, setToggled }: { isToggled?: boolean; setTogg
     const companyName = "khmerlish"
     return (
         <HeaderContainer>
-            <div style={{ display: 'flex', alignItems: 'center' }} onClick={() => window.location.href = '/'}>
+            <Link to="/" style={{ display: 'flex', alignItems: 'center', color: 'inherit', textDecoration: 'none' }}>
                 <img src="/logo/Khmerlish_Transparent.png" alt="Khmerlish Logo" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
                 <span
                     style={{ cursor: 'pointer', marginTop: '7px', marginLeft: '-7px' }}
@@ -24,7 +25,7 @@ export function Header({ isToggled, setToggled }: { isToggled?: boolean; setTogg
 
                 > {companyName}
                 </span>
-            </div>
+            </Link>
             <Button onClick={() => setToggled(!isToggled)}>
                 <DensityMediumIcon style={{ color: 'rgba( 238, 162, 51, 100%)' }} />
             </Button>
